@@ -12,9 +12,9 @@ entity implementacao is
         Pwin        : out std_logic;
         Plose       : out std_logic;
         TIE         : out std_logic;
-        hex_card    : out std_logic_vector(7 downto 0);
-        sum1_dec    : out std_logic_vector(7 downto 0);
-        sum2_dec    : out std_logic_vector(7 downto 0)
+        hex_disp    : out std_logic_vector(7 downto 0);
+        sum1_disp    : out std_logic_vector(7 downto 0);
+        sum2_disp    : out std_logic_vector(7 downto 0)
     );
 end implementacao;
 
@@ -22,8 +22,6 @@ architecture Behavioral of implementacao is
 
     signal cards_req   : std_logic;
     signal hexCard_int : std_logic_vector(3 downto 0);
-    signal sum1_int    : std_logic_vector(7 downto 0);
-    signal sum2_int    : std_logic_vector(7 downto 0);
 begin
     cards_inst : entity work.cards
         port map (
@@ -46,12 +44,8 @@ begin
             PWIN       => Pwin,
             PLOSE      => Plose,
             TIE        => TIE,
-            hexCard    => hex_card,
-            sumDigit1  => sum1_int,
-            sumDigit2  => sum2_int
+            hexCard    => hex_disp,
+            sumDigit1  => sum1_disp,
+            sumDigit2  => sum2_disp
         );
-
-    hex_card  <= hexCard_int;
-    sum1_dec  <= sum1_int;
-    sum2_dec  <= sum2_int;
 end Behavioral;
