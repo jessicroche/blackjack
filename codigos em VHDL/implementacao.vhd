@@ -32,7 +32,7 @@ begin
             reqCarta    => cards_req,
             reqManual   => reqManual,
             cartaManual => cartaManual,
-            random_number => hexCard_int
+            cartaFinal => hexCard_int
         );
 
     blackjack_inst : entity work.blackjack
