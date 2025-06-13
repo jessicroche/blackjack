@@ -13,8 +13,9 @@ entity implementacao is
         Pwin : out std_logic; -- Player win signal
         Plose : out std_logic; -- Player lose signal
         TIE : out std_logic; -- Tie signal
-        hexCard : out std_logic_vector(3 downto 0); -- Card output
-        sumDecimal : out std_logic_vector(7 downto 0) -- Sum output
+        hexCard : out std_logic_vector(7 downto 0);
+        sum1_dec : out std_logic_vector(7 downto 0);
+        sum2_dec : out std_logic_vector(7 downto 0)
      );
 end implementacao;
 
@@ -43,6 +44,7 @@ architecture Behavioral of implementacao is
                 PLOSE => Plose,
                 TIE => TIE,
                 hexCard => hexCard,
-                sumDecimal => sumDecimal
+                sumDigit1 => sum1_dec,
+                sumDigit2 => sum2_dec
             );
 end Behavioral;

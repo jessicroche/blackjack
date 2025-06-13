@@ -14,8 +14,9 @@ entity blackjack is
         PWIN : out std_logic;
         PLOSE : out std_logic;
         TIE : out std_logic;
-        hexCard : out std_logic_vector(3 downto 0);
-        sumDecimal : out std_logic_vector(7 downto 0)
+        hexCard : out std_logic_vector(7 downto 0); --carta pescada
+        sumDigit1 : out std_logic_vector(7 downto 0); --soma
+        sumDigit2 : out std_logic_vector(7 downto 0) --soma
     );
 end blackjack;
 
@@ -24,7 +25,7 @@ architecture Behavioral of blackjack is
     signal dealerValue : integer := 0; --alterado para nao ter mais range
     signal cardValue : integer range 1 to 13;
     signal possuiAce : boolean := false;
-    signal digit1, digit2 : std_logic_vector(3 downto 0);
+    
     type state_type is (
         Pcar1, Pcar1_wait, Pcar2, Pcar2_wait,
         Dcar1, Dcar1_wait, Dcar2, Dcar2_wait,
@@ -35,12 +36,42 @@ architecture Behavioral of blackjack is
     );
     signal current_state : state_type; 
     signal next_state    : state_type;
+
+
+    function hex_to_7seg(value : integer) return std_logic_vector is
+    variable seg : std_logic_vector(7 downto 0); 
+    begin
+        case value is
+            when 0  => seg := "11000000"; -- 0
+            when 1  => seg := "11111001"; -- 1
+            when 2  => seg := "10100100"; -- 2
+            when 3  => seg := "10110000"; -- 3
+            when 4  => seg := "10011001"; -- 4
+            when 5  => seg := "10010010"; -- 5
+            when 6  => seg := "10000010"; -- 6
+            when 7  => seg := "11111000"; -- 7
+            when 8  => seg := "10000000"; -- 8
+            when 9  => seg := "10010000"; -- 9
+            when 10 => seg := "10001000"; -- A
+            when 11 => seg := "10000011"; -- b
+            when 12 => seg := "11000110"; -- C
+            when 13 => seg := "10100001"; -- d
+            when others => seg := "11111111"; -- tudo apagado
+        end case;
+        return seg;
+    end function;
+
+
 begin 
 
     process(clk, start)
     begin
         if start = '1' then
             current_state <= Pcar1;
+            playerValue <= 0; -- reset do valor do player
+            dealerValue <= 0; -- reset do dealer
+            possuiAce <= false;  -- reset ta flag do as
+
         elsif falling_edge(clk) then
             --atribuicao do valor de CARD para o cardvalue toda descida do clock
             --importante pois as atribuicoes utilizadas sao feitas considerando
@@ -60,8 +91,7 @@ begin
                             else
                                 playerValue <= playerValue + cardValue;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                            hexCard <= CARD;
+
                             -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
                             next_state <= Pcar2;
                         when Pcar2 =>
@@ -80,8 +110,7 @@ begin
                             elsif cardValue > 10 then 
                                 playerValue <= playerValue + 10;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                            hexCard <= CARD;
+
                             next_state <= Pturn;
                         when Pturn =>
                             if HIT = '1' then
@@ -128,8 +157,6 @@ begin
                                     next_state <= Pbust;
                                 end if;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                            hexCard <= CARD;
                         when Pstay =>
                             possuiAce <= false;
                             next_state <= Dcar1;
@@ -149,9 +176,8 @@ begin
                             else
                                 dealerValue <= dealerValue + cardValue;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
                             -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
-                            hexCard <= CARD;
+
                             next_state <= Dcar2;
                         when Dcar2 =>
                             REQCARD <= '1'; 
@@ -169,8 +195,6 @@ begin
                             elsif cardValue > 10 then 
                                 dealerValue <= dealerValue + 10;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
-                            hexCard <= CARD;
                             next_state <= Dturn;
 
 
@@ -219,8 +243,6 @@ begin
                                     next_state <= Dbust;
                                 end if;
                             end if;
-                            sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
-                            hexCard <= CARD;
                             
                         when Dstay =>
                         next_state <= winner;
@@ -241,52 +263,37 @@ begin
                                 next_state <= Tie_;
                             end if;
                         
-                        end case;
-                        
-                    end if;
-                end process;
-
-    process(current_state) is begin
-        case current_state is
-            when Pcar1_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(playerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(playerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Pcar2_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(playerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(playerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Phit_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(playerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(playerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(playerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Dcar1_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(dealerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(dealerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Dcar2_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(dealerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(dealerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Dhit_wait =>
-                sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
-                digit1 <= std_logic_vector(to_unsigned(dealerValue / 10, 4)); -- Dezena
-                digit2 <= std_logic_vector(to_unsigned(dealerValue mod 10, 4)); -- Unidade
-                hexCard <= CARD;
-            when Pstay =>
-                sumDecimal <= (others => '0');
-                digit1 <= (others => '0');
-                digit2 <= (others => '0');
-                hexCard <= (others => '0');
-            when Dstay =>
-                
-            
             end case;
-        end process;
+            current_state <= next_state;
+            end if;
+    end process;
+
+process(current_state) is
+begin
+    case current_state is
+        when Pcar1_wait | Pcar2_wait | Phit_wait =>
+        hexCard <= hex_to_7seg(cardValue);
+        sumDigit1 <= hex_to_7seg(playerValue/10);
+        sumDigit2 <= hex_to_7seg(playerValue mod 10);
+
+        when Dcar1_wait | Dcar2_wait | Dhit_wait =>
+        hexCard <= hex_to_7seg(cardValue);
+        sumDigit1 <= hex_to_7seg(dealerValue/10);
+        sumDigit2 <= hex_to_7seg(dealerValue mod 10);
+
+        when Dbust | Pwin_ =>
+            PWIN <= '1';
+            PLOSE <= '0'; 
+            TIE <= '0'; 
+        when Pbust | Plose_ =>
+            PWIN <= '0'; 
+            PLOSE <= '1'; 
+            TIE <= '0'; 
+        when tie_ =>
+            PWIN <= '0'; 
+            PLOSE <= '0'; 
+            TIE <= '1';
+    end case;
+end process;
         
 end Behavioral;
