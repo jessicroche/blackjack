@@ -20,8 +20,8 @@ entity blackjack is
 end blackjack;
 
 architecture Behavioral of blackjack is
-    signal playerValue : integer range 0 to 21 := 0;
-    signal dealerValue : integer range 0 to 21 := 0;
+    signal playerValue : integer := 0; --alterado para nao ter mais range
+    signal dealerValue : integer := 0; --alterado para nao ter mais range
     signal cardValue : integer range 1 to 13;
     signal possuiAce : boolean := false;
     signal digit1, digit2 : std_logic_vector(3 downto 0);
@@ -30,6 +30,7 @@ architecture Behavioral of blackjack is
         Dcar1, Dcar1_wait, Dcar2, Dcar2_wait,
         Pturn, Phit, Phit_wait, Pstay, Pbust,
         Dturn, Dhit, Dhit_wait, Dstay, Dbust,
+        Plose_, Pwin_, Tie_, --adicionados estados para referenciar as saidas
         winner
     );
     signal current_state : state_type; 
@@ -41,6 +42,10 @@ begin
         if start = '1' then
             current_state <= Pcar1;
         elsif falling_edge(clk) then
+            --atribuicao do valor de CARD para o cardvalue toda descida do clock
+            --importante pois as atribuicoes utilizadas sao feitas considerando
+            -- o valor inteiro de CARD e nao o STD logic vector
+            cardValue <= to_integer(unsigned(CARD)) + 1;
             case current_state is
                         when Pcar1 => 
                             REQCARD <= '1';
@@ -128,8 +133,9 @@ begin
                         when Pstay =>
                             possuiAce <= false;
                             next_state <= Dcar1;
-                        
-
+                        when Pbust =>
+                            next_state <= Plose_; -- add estado de plose na transicao
+                            
                         when Dcar1 => 
                             REQCARD <= '1';
                             next_state <= Dcar1_wait;
@@ -216,36 +222,25 @@ begin
                             sumDecimal <= std_logic_vector(to_unsigned(dealerValue, 8));
                             hexCard <= CARD;
                             
-                            when Dstay =>
-                                if playerValue > 21 then
-                                    PLOSE <= '1';
-                                else
-                                    next_state <= winner;
-                                end if;
-
-
-                            -- estados de decisao
-
-                            when Pbust =>
-                                PLOSE <= '1'; --estouro do player, vitoria imediata do dealer
-                            when Dbust =>
-                            --para chegar no dbust, o player precisa ter mandado '1' no stay
-                            --sem ter dado bust, entao eh vitoria imediata pro player
-                                PWIN <= '1';
-                            when winner =>
-                                if playerValue > dealerValue then
-                                    PLOSE <= '0';
-                                    PWIN <= '1';
-                                    TIE <= '0';
-                                elsif playerValue < dealerValue then
-                                    PLOSE <= '1';
-                                    PWIN <= '0'; 
-                                    TIE <= '0';
-                                else
-                                    PLOSE <= '0'; 
-                                    PWIN <= '0'; 
-                                    TIE <= '1';
-                                end if;
+                        when Dstay =>
+                        next_state <= winner;
+                        when Dbust =>
+                        --para chegar no dbust, o player precisa ter mandado '1' no stay
+                        --sem ter dado bust, entao eh vitoria imediata pro player
+                            next_state <= Pwin_; --add estado de pwin na transicao
+                        when winner =>
+                        --mudanca do estado winner para transicionar
+                        --para os novos estados pwin, plose, tie
+                        --importante porque a logica tava misturada e esse
+                        --estado estava mexendo diretamente nas saidas da FPGA
+                            if playerValue > dealerValue then
+                                next_state <= Pwin_; 
+                            elsif playerValue < dealerValue then
+                                next_state <= Plose_;
+                            else
+                                next_state <= Tie_;
+                            end if;
+                        
                         end case;
                         
                     end if;
