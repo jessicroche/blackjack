@@ -24,7 +24,7 @@ begin
 
     process(clk, reset)
     begin
-        if reset = '1' then
+        if reset = '0' then
             lfsr <= "1110110010101110"; -- volta pra seed original
             current_state <= idle;
         elsif falling_edge(clk) then
@@ -37,6 +37,7 @@ begin
                 else
                     next_state <= idle; 
                 end if;
+				when others => null;
             end case;
             current_state <= next_state;
         end if;
@@ -51,7 +52,8 @@ begin
                 rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
                 random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
             when manual =>
-                cartaFinal <= cartaManual; 
+                cartaFinal <= cartaManual;
+				when others => null;
         end case;
     end process;
 
