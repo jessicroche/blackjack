@@ -37,6 +37,10 @@ begin
                 else
                     next_state <= idle; 
                 end if;
+            when rand => -- add transicao de rand de volta para idle
+                    next_state <= idle;
+            when manual => --add transicao de manual de volta para idle
+                    next_state <= idle; 
 				when others => null;
             end case;
             current_state <= next_state;
@@ -51,6 +55,7 @@ begin
                 (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
                 rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
                 random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
+                cartaFinal <= random_number; --correcao da atribuicao da carta na saida
             when manual =>
                 cartaFinal <= cartaManual;
 				when others => null;
