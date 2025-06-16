@@ -260,22 +260,26 @@ process(current_state) is
 begin
     case current_state is
 
-        when Pcar1 =>
+        when Pcar1 | Dcar1 =>
             PWIN <= '0'; 
             PLOSE <= '0';
             TIE <= '0'; 
-            REQCARD <= '1'; 
-
-        when Dcar1 | Dcar2 | Pcar2 | Dhit | Phit =>
             REQCARD <= '1';
+            --agora zera os displays no comeco da rodada
+            hexCard   <= "1000000";
+            sumDigit1 <= "1000000";
+            sumDigit2 <= "1000000";
 
-        when Pcar1_wait | Pcar2_wait | Phit_wait =>
+        when Dcar2 | Pcar2 | Dhit | Phit =>
+            REQCARD <= '1'; --so da trigger na maquina de gerar cartas
+
+        when Pcar1_wait | Pcar2_wait | Phit_wait | Pturn => --add turn aqui
             REQCARD <= '0';
             hexCard <= hex_to_7seg(cardValue);
             sumDigit1 <= hex_to_7seg(playerValue/10);
             sumDigit2 <= hex_to_7seg(playerValue mod 10);
 
-        when Dcar1_wait | Dcar2_wait | Dhit_wait =>
+        when Dcar1_wait | Dcar2_wait | Dhit_wait | Dturn => --add turn aqui
             REQCARD <= '0';
             hexCard <= hex_to_7seg(cardValue);
             sumDigit1 <= hex_to_7seg(dealerValue/10);
