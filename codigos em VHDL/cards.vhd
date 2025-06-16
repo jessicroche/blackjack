@@ -14,7 +14,7 @@ entity cards is
 end cards;
 
 architecture Behavioral of cards is
-    type state_type is (idle, rand, read, manual);
+    type state_type is (idle, rand, manual);
     signal current_state : state_type; 
     signal next_state    : state_type;
     signal lfsr : std_logic_vector(15 downto 0) := "1010110010100000";  -- SEED
@@ -38,6 +38,8 @@ begin
                     next_state <= idle; 
                 end if;
             when rand => -- add transicao de rand de volta para idle
+                lfsr <= lfsr(14 downto 0) & 
+                (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
                     next_state <= idle;
             when manual => --add transicao de manual de volta para idle
                     next_state <= idle; 
@@ -51,8 +53,6 @@ begin
     begin
         case current_state is 
             when rand =>
-                lfsr <= lfsr(14 downto 0) & 
-                (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
                 rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
                 random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
                 cartaFinal <= random_number; --correcao da atribuicao da carta na saida
