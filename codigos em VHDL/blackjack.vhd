@@ -105,8 +105,9 @@ begin
                         end if;
                     elsif cardValue > 10 then 
                         playerValue <= playerValue + 10;
+                    else
+                        playerValue <= playerValue + cardValue;
                     end if;
-
                     next_state <= Pturn;
                 when Pturn =>
                     if HIT = '1' then
@@ -184,6 +185,8 @@ begin
                         end if;
                     elsif cardValue > 10 then 
                         dealerValue <= dealerValue + 10;
+                    else
+                        dealerValue <= dealerValue + cardValue;
                     end if;
                     next_state <= Dturn;
 
