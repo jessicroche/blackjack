@@ -29,9 +29,8 @@ architecture Behavioral of blackjack is
     type state_type is (
         Player_card1, Player_card1_soma, Player_card2, Player_card2_soma,
         Dealer_card1, Dealer_card1_soma, Dealer_card2, Dealer_card2_soma,
-        player_turn, playerHit, playerHit_soma, playerStay, playerBust,
-        dealer_turn, dealerHit, dealerHit_soma, dealerStay, dealerBust,
-        playerLose, playerWin, playerTie, --adicionados estados para referenciar as saidas
+        player_turn, playerHit, playerHit_soma, playerStay, playerLose,
+        dealer_turn, dealerHit, dealerHit_soma, dealerStay, playerWin, playerTie,
         decideWinner, dummy_Player_card1, dummy_Player_card2, dummyDealer_card1, dummyDealer_card2,
         dummy_playerHit, dummy_dealerHit
     );
@@ -160,7 +159,7 @@ begin
                         elsif ( playerValue + cardValue <= 21) then 
                             playerValue <= playerValue + cardValue;  -- soma o as como 1
                         else
-                            current_state <= playerBust; -- o as como 1 deu bust na soma
+                            current_state <= playerLose; -- o as como 1 deu bust na soma
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if playerValue + 10 <= 21 then
@@ -170,7 +169,7 @@ begin
                             hasAce <= false;
                             current_state <= player_turn;
                         else -- estoura com uma figura, nao possui as
-                            current_state <= playerBust;
+                            current_state <= playerLose;
                         end if;
                     else -- se for qualquer outra carta
                         if playerValue + cardValue <= 21 then
@@ -181,13 +180,13 @@ begin
                             playerValue <= playerValue - 10 + cardValue;
                             current_state <= player_turn;
                         else -- estoura e nao tem as
-                            current_state <= playerBust;
+                            current_state <= playerLose;
                         end if;
                     end if;
                 when playerStay => --ok
                     hasAce <= false;
                     current_state <= Dealer_card1;
-                when playerBust => --ok
+                when playerLose => --ok
                     current_state <= playerLose; -- add estado de plose na transicao
                     
                 when Dealer_card1 => --ok
@@ -273,7 +272,7 @@ begin
                         elsif ( dealerValue + cardValue <= 21) then 
                             dealerValue <= dealerValue + cardValue;  -- soma o as como 1
                         else
-                            current_state <= dealerBust; -- o as como 1 deu bust na soma
+                            current_state <= playerWin; -- o as como 1 deu bust na soma
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if dealerValue + 10 <= 21 then
@@ -283,7 +282,7 @@ begin
                             hasAce <= false;
                             current_state <= dealer_turn;
                         else -- estoura com uma figura, nao possui as
-                            current_state <= dealerBust;
+                            current_state <= playerWin;
                         end if;
                     else -- se for qualquer outra carta
                         if dealerValue + cardValue <= 21 then
@@ -294,16 +293,13 @@ begin
                             dealerValue <= dealerValue - 10 + cardValue;
                             current_state <= dealer_turn;
                         else -- estoura e nao tem as
-                            current_state <= dealerBust;
+                            current_state <= playerWin;
                         end if;
                     end if;
                     
                 when dealerStay => --ok
                     current_state <= decideWinner;
-                when dealerBust => --ok
-                --para chegar no dealerBust, o player precisa ter mandado '1' no stay
-                --sem ter dado bust, entao eh vitoria imediata pro player
-                    current_state <= playerWin; --add estado de pwin na transicao
+
                 when decideWinner => --ok
                 --mudanca do estado decideWinner para transicionar
                 --para os novos estados pwin, plose, tie
@@ -372,12 +368,11 @@ begin
                 sumDigit2 <= hex_to_7seg(dealerValue mod 10);
 
             end if;
-
-        when dealerBust | playerWin =>
+        when playerWin =>
             PWIN <= '1';
             PLOSE <= '0'; 
             TIE <= '0'; 
-        when playerBust | playerLose =>
+        when playerLose =>
             PWIN <= '0'; 
             PLOSE <= '1'; 
             TIE <= '0'; 
