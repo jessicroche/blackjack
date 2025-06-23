@@ -77,14 +77,14 @@ begin
         elsif falling_edge(clk) then
 
             case current_state is
-                when Player_card1 => --ok
+                when Player_card1 => 
                     playerValue  <= 0;
                     dealerValue  <= 0;
                     hasAce    <= false;
                     cardValue <= 0;
                     current_state <= dummy_Player_card1;
                 
-                when dummy_Player_card1 => --ok
+                when dummy_Player_card1 => 
                     if to_integer(unsigned(CARD)) = 0 then
                         current_state <= dummy_Player_card1;
                     else
@@ -92,7 +92,7 @@ begin
                         current_state <= Player_card1_soma;
                     end if;
 
-                when Player_card1_soma => --ok
+                when Player_card1_soma => 
                     if cardValue = 1 then
                         playerValue <= playerValue + 11;
                         hasAce <= true;
@@ -104,11 +104,11 @@ begin
 
                     -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
                     current_state <= Player_card2;
-                when Player_card2 => --ok
+                when Player_card2 => 
                     cardValue <= 0;
                     current_state <= dummy_Player_card2;
 
-                when dummy_Player_card2 => --ok
+                when dummy_Player_card2 => 
                     if to_integer(unsigned(CARD)) = 0 then
                         current_state <= dummy_Player_card2;
                     else
@@ -116,7 +116,7 @@ begin
                         current_state <= Player_card2_soma;
                     end if;
 
-                when Player_card2_soma => --ok
+                when Player_card2_soma => 
                     if cardValue = 1 then
                         if ( playerValue + 11 <= 21 ) then
                             playerValue <= playerValue + 11;
@@ -132,7 +132,7 @@ begin
                     end if;
 							
                     current_state <= player_turn;
-                when player_turn => --ok
+                when player_turn => 
 							cardValue <= 0;
                     if HIT = '1' and STAY = '0' then
                         current_state <= dummy_playerHit;
@@ -142,7 +142,7 @@ begin
                         current_state <= player_turn;                                      
                     end if;
 
-                when dummy_playerHit => --ok
+                when dummy_playerHit => 
                     if to_integer(unsigned(CARD)) = 0 then
                         current_state <= dummy_playerHit;
                     else
@@ -150,7 +150,7 @@ begin
                         current_state <= playerHit_soma;
                     end if;
 
-                when playerHit_soma => --ok
+                when playerHit_soma => 
                     if cardValue = 1 then --se for as
                         if ( playerValue + 11 <= 21 ) then
                             playerValue <= playerValue + 11; --soma o as como 11
@@ -184,15 +184,15 @@ begin
                             current_state <= playerLose;
                         end if;
                     end if;
-                when playerStay => --ok
+                when playerStay => 
                     hasAce <= false;
                     current_state <= Dealer_card1;
                     
-                when Dealer_card1 => --ok
+                when Dealer_card1 => 
                     cardValue <= 0;
                     current_state <= dummyDealer_card1;
 
-                when dummyDealer_card1 => --ok
+                when dummyDealer_card1 => 
                     if to_integer(unsigned(CARD)) = 0 then
                         current_state <= dummyDealer_card1;
                     else
@@ -200,7 +200,7 @@ begin
                         current_state <= Dealer_card1_soma;
                     end if;
 
-                when Dealer_card1_soma => --ok
+                when Dealer_card1_soma => 
                     if cardValue = 1 then
                         dealerValue <= dealerValue + 11;
                         hasAce <= true;
@@ -212,11 +212,11 @@ begin
                     -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
 
                     current_state <= Dealer_card2;
-                when Dealer_card2 => --ok
+                when Dealer_card2 => 
                     cardValue <= 0;
                     current_state <= dummyDealer_card2;
 
-                when dummyDealer_card2 => --ok
+                when dummyDealer_card2 =>
                     if to_integer(unsigned(CARD)) = 0 then
                         current_state <= dummyDealer_card2;
                     else
@@ -224,7 +224,7 @@ begin
                         current_state <= Dealer_card2_soma;
                     end if;
 
-                when Dealer_card2_soma => --ok
+                when Dealer_card2_soma => 
                     if cardValue = 1 then
                         if ( dealerValue + 11 <= 21 ) then
                             dealerValue <= dealerValue + 11;
@@ -241,7 +241,7 @@ begin
                     current_state <= dealer_turn;
 
 
-                when dealer_turn => --ok
+                when dealer_turn => 
 					 cardValue <= 0;
                     if dealerValue < 17 then
                         current_state <= dummy_dealerHit;
@@ -260,7 +260,7 @@ begin
                     end if;
 
                 
-                when dealerHit_soma => --ok
+                when dealerHit_soma => 
                     if cardValue = 1 then --se for as
                         if ( dealerValue + 11 <= 21 ) then
                             dealerValue <= dealerValue + 11; --soma o as como 11
@@ -295,10 +295,10 @@ begin
                         end if;
                     end if;
                     
-                when dealerStay => --ok
+                when dealerStay =>
                     current_state <= decideWinner;
 
-                when decideWinner => --ok
+                when decideWinner => 
                     if playerValue > dealerValue then
                         current_state <= playerWin; 
                     elsif playerValue < dealerValue then
@@ -308,7 +308,7 @@ begin
                     end if;
 						  
 					when playerWin | playerLose | playerTie =>
-						current_state <= Player_card1; --recome?a o jogo
+						current_state <= Player_card1; --reset
                 when others => null;
             end case;
         end if;
@@ -325,13 +325,13 @@ begin
     sumDigit2 <= hex_to_7seg(0);
     case current_state is
             
-        when Player_card1 | Player_card2 | Dealer_card1 | Dealer_card2 =>
+        when Player_card1 | Player_card2 | Dealer_card1 | Dealer_card2 | dummy_dealerHit | dummy_playerHit =>
             REQCARD <= '1';
-            if current_state = Player_card2 then
+            if current_state = Player_card2 or current_state = dummy_playerHit then
                 hexCard <= hex_to_7seg(cardValue);
                 sumDigit1 <= hex_to_7seg(playerValue/10);
                 sumDigit2 <= hex_to_7seg(playerValue mod 10);
-            elsif current_state = Dealer_card2 then
+            elsif current_state = Dealer_card2 or current_state = dummy_dealerHit then
                 hexCard <= hex_to_7seg(cardValue);
                 sumDigit1 <= hex_to_7seg(dealerValue/10);
                 sumDigit2 <= hex_to_7seg(dealerValue mod 10);
@@ -361,18 +361,7 @@ begin
                 hexCard <= hex_to_7seg(cardValue);
                 sumDigit1 <= hex_to_7seg(dealerValue/10);
                 sumDigit2 <= hex_to_7seg(dealerValue mod 10);
-
             end if;
-		when dummy_playerHit | dummy_dealerHit => -- transicao direta pra dummies pra evitar +1 clock
-		    REQCARD <= '1';
-			hexCard <= hex_to_7seg(cardValue);
-			if current_state = dummy_playerHit then
-                sumDigit1 <= hex_to_7seg(playerValue/10);
-                sumDigit2 <= hex_to_7seg(playerValue mod 10);
-			else
-                sumDigit1 <= hex_to_7seg(dealerValue/10);
-                sumDigit2 <= hex_to_7seg(dealerValue mod 10);
-			end if;
 		when playerStay | dealerStay =>
 			REQCARD <= '0';
         when playerWin =>
