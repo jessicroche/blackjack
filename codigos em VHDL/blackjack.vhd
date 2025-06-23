@@ -29,36 +29,38 @@ architecture Behavioral of blackjack is
     type state_type is (
         Player_card1, Player_card1_soma, Player_card2, Player_card2_soma,
         Dealer_card1, Dealer_card1_soma, Dealer_card2, Dealer_card2_soma,
-        player_turn, playerHit, playerHit_soma, playerStay, playerLose,
-        dealer_turn, dealerHit, dealerHit_soma, dealerStay, playerWin, playerTie,
+        player_turn, playerHit_soma, playerStay, playerLose,
+        dealer_turn, dealerHit_soma, dealerStay, playerWin, playerTie,
         decideWinner, dummy_Player_card1, dummy_Player_card2, dummyDealer_card1, dummyDealer_card2,
         dummy_playerHit, dummy_dealerHit
     );
     signal current_state : state_type; 
 
 
-    function hex_to_7seg(value : integer) return std_logic_vector is
-    variable seg : std_logic_vector(6 downto 0); 
-    begin
-        case value is
-            when 0  => seg := "1000000"; -- 0
-            when 1  => seg := "1111001"; -- 1
-            when 2  => seg := "0100100"; -- 2
-            when 3  => seg := "0110000"; -- 3
-            when 4  => seg := "0011001"; -- 4
-            when 5  => seg := "0010010"; -- 5
-            when 6  => seg := "0000010"; -- 6
-            when 7  => seg := "1111000"; -- 7
-            when 8  => seg := "0000000"; -- 8
-            when 9  => seg := "0010000"; -- 9
-            when 10 => seg := "0001000"; -- A
-            when 11 => seg := "0000011"; -- b
-            when 12 => seg := "1000110"; -- C
-            when 13 => seg := "0100001"; -- d
-            when others => seg := "1111111"; -- tudo apagado
-        end case;
-        return seg;
-    end function;
+function hex_to_7seg(value : integer) return std_logic_vector is
+    variable seg : std_logic_vector(6 downto 0);
+begin
+    case value is
+        when 0  => seg := "1000000"; -- 0
+        when 1  => seg := "1111001"; -- 1
+        when 2  => seg := "0100100"; -- 2
+        when 3  => seg := "0110000"; -- 3
+        when 4  => seg := "0011001"; -- 4
+        when 5  => seg := "0010010"; -- 5
+        when 6  => seg := "0000010"; -- 6
+        when 7  => seg := "1111000"; -- 7
+        when 8  => seg := "0000000"; -- 8
+        when 9  => seg := "0010000"; -- 9
+        when 10 => seg := "0001000"; -- A
+        when 11 => seg := "0000011"; -- b
+        when 12 => seg := "1000110"; -- C
+        when 13 => seg := "0100001"; -- d
+        when 14 => seg := "0000110"; -- E
+        when 15 => seg := "0001110"; -- F
+        when others => seg := "1111111"; -- apagado
+    end case;
+    return seg;
+end function;
 
 
 begin 
@@ -128,19 +130,17 @@ begin
 						  else
 								playerValue <= playerValue + cardValue;
                     end if;
-
+							
                     current_state <= player_turn;
                 when player_turn => --ok
-                    if HIT = '1' then
-                        current_state <= playerHit;
-                    elsif STAY = '1' then
+							cardValue <= 0;
+                    if HIT = '1' and STAY = '0' then
+                        current_state <= dummy_playerHit;
+                    elsif STAY = '1' and HIT = '0' then
                         current_state <= playerStay;
                     else
                         current_state <= player_turn;                                      
                     end if;
-                when playerHit => --ok
-                    cardValue <= 0;
-                    current_state <= dummy_playerHit;
 
                 when dummy_playerHit => --ok
                     if to_integer(unsigned(CARD)) = 0 then
@@ -158,6 +158,7 @@ begin
                             current_state <= player_turn;
                         elsif ( playerValue + cardValue <= 21) then 
                             playerValue <= playerValue + cardValue;  -- soma o as como 1
+									 current_state <= player_turn;
                         else
                             current_state <= playerLose; -- o as como 1 deu bust na soma
                         end if;
@@ -186,8 +187,6 @@ begin
                 when playerStay => --ok
                     hasAce <= false;
                     current_state <= Dealer_card1;
-                when playerLose => --ok
-                    current_state <= playerLose; -- add estado de plose na transicao
                     
                 when Dealer_card1 => --ok
                     cardValue <= 0;
@@ -243,16 +242,14 @@ begin
 
 
                 when dealer_turn => --ok
+					 cardValue <= 0;
                     if dealerValue < 17 then
-                        current_state <= dealerHit;
+                        current_state <= dummy_dealerHit;
                     elsif dealerValue >= 17 then
                         current_state <= dealerStay;
                     else
                         current_state <= dealer_turn;                             
                     end if;
-                when dealerHit => --ok
-                    cardValue <= 0;
-                    current_state <= dummy_dealerHit;
 
                 when dummy_dealerHit =>
                     if to_integer(unsigned(CARD)) = 0 then
@@ -271,6 +268,7 @@ begin
                             current_state <= dealer_turn;
                         elsif ( dealerValue + cardValue <= 21) then 
                             dealerValue <= dealerValue + cardValue;  -- soma o as como 1
+									 current_state <= dealer_turn;
                         else
                             current_state <= playerWin; -- o as como 1 deu bust na soma
                         end if;
@@ -301,10 +299,6 @@ begin
                     current_state <= decideWinner;
 
                 when decideWinner => --ok
-                --mudanca do estado decideWinner para transicionar
-                --para os novos estados pwin, plose, tie
-                --importante porque a logica tava misturada e esse
-                --estado estava mexendo diretamente nas saidas da FPGA
                     if playerValue > dealerValue then
                         current_state <= playerWin; 
                     elsif playerValue < dealerValue then
@@ -312,8 +306,9 @@ begin
                     else
                         current_state <= playerTie;
                     end if;
+						  
 					when playerWin | playerLose | playerTie =>
-						current_state <= Player_card1; --recomeça o jogo
+						current_state <= Player_card1; --recome?a o jogo
                 when others => null;
             end case;
         end if;
@@ -324,31 +319,31 @@ begin
     PWIN <= '0';
     PLOSE <= '0';
     TIE <= '0';
-    REQCARD <= '0'; -- REQCARD é 0 por padrão, só vai para 1 quando pedir carta.
-    hexCard <= hex_to_7seg(0); -- Display de carta mostra 0 por padrão.
-    sumDigit1 <= hex_to_7seg(0); -- Display de dezena da soma mostra 0 por padrão.
+    REQCARD <= '0'; 
+    hexCard <= hex_to_7seg(0); 
+    sumDigit1 <= hex_to_7seg(0); 
     sumDigit2 <= hex_to_7seg(0);
     case current_state is
             
-        when Player_card1 | Player_card2 | playerHit | Dealer_card1 | Dealer_card2 | dealerHit =>
+        when Player_card1 | Player_card2 | Dealer_card1 | Dealer_card2 =>
             REQCARD <= '1';
-            if current_state = Player_card2 or current_state = playerHit then
+            if current_state = Player_card2 then
                 hexCard <= hex_to_7seg(cardValue);
                 sumDigit1 <= hex_to_7seg(playerValue/10);
                 sumDigit2 <= hex_to_7seg(playerValue mod 10);
-            elsif current_state = Dealer_card2 or current_state = dealerHit then
+            elsif current_state = Dealer_card2 then
                 hexCard <= hex_to_7seg(cardValue);
                 sumDigit1 <= hex_to_7seg(dealerValue/10);
                 sumDigit2 <= hex_to_7seg(dealerValue mod 10);
             end if;
 
-            when dummy_Player_card1 | dummy_Player_card2 | dummy_playerHit | dummyDealer_card1 | dummyDealer_card2 | dummy_dealerHit =>
+            when dummy_Player_card1 | dummy_Player_card2 | dummyDealer_card1 | dummyDealer_card2 | player_turn | dealer_turn =>
                 REQCARD <= '0';
                 hexCard <= hex_to_7seg(0); -- Zera a carta temporariamente enquanto espera a nova.
-                if current_state = dummy_Player_card2 or current_state = dummy_playerHit then
+                if current_state = dummy_Player_card2 or current_state = dummy_playerHit or current_state = player_turn then
                     sumDigit1 <= hex_to_7seg(playerValue/10);
                     sumDigit2 <= hex_to_7seg(playerValue mod 10);
-                elsif current_state = dummyDealer_card2 or current_state = dummy_dealerHit then
+                elsif current_state = dummyDealer_card2 or current_state = dummy_dealerHit or current_state = dealer_turn then
                     sumDigit1 <= hex_to_7seg(dealerValue/10);
                     sumDigit2 <= hex_to_7seg(dealerValue mod 10);
                 end if;
@@ -368,15 +363,30 @@ begin
                 sumDigit2 <= hex_to_7seg(dealerValue mod 10);
 
             end if;
+		when dummy_playerHit | dummy_dealerHit => -- transicao direta pra dummies pra evitar +1 clock
+		    REQCARD <= '1';
+			hexCard <= hex_to_7seg(cardValue);
+			if current_state = dummy_playerHit then
+                sumDigit1 <= hex_to_7seg(playerValue/10);
+                sumDigit2 <= hex_to_7seg(playerValue mod 10);
+			else
+                sumDigit1 <= hex_to_7seg(dealerValue/10);
+                sumDigit2 <= hex_to_7seg(dealerValue mod 10);
+			end if;
+		when playerStay | dealerStay =>
+			REQCARD <= '0';
         when playerWin =>
+			REQCARD <= '0';
             PWIN <= '1';
             PLOSE <= '0'; 
             TIE <= '0'; 
         when playerLose =>
+			REQCARD <= '0';
             PWIN <= '0'; 
             PLOSE <= '1'; 
             TIE <= '0'; 
         when playerTie =>
+			REQCARD <= '0';
             PWIN <= '0'; 
             PLOSE <= '0'; 
             TIE <= '1';
