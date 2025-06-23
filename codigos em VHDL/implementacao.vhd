@@ -27,10 +27,10 @@ begin
         port map (
             clk         => clk,
             reset       => start,
-            reqCarta    => cards_req,
+            reqCard    => cards_req,
             reqManual   => reqManual,
-            cartaManual => cartaManual,
-            cartaFinal => hexCard_int
+            cardManual => cartaManual,
+            cardFinal => hexCard_int
         );
 
     blackjack_inst : entity work.blackjack
