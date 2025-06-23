@@ -21,20 +21,19 @@ entity blackjack is
 end blackjack;
 
 architecture Behavioral of blackjack is
-    signal playerValue : integer := 0; --alterado para nao ter mais range
-    signal dealerValue : integer := 0; --alterado para nao ter mais range
+    signal playerValue : integer := 0; 
+    signal dealerValue : integer := 0;
     signal cardValue : integer range 0 to 13; --range alterado para 0 = carta invalida
-	signal randomCard : integer range 0 to 13; --range alterado para 0 = carta invalida
-    signal possuiAce : boolean := false;
+    signal hasAce : boolean := false;
     
     type state_type is (
-        Pcar1, Pcar1_soma, Pcar2, Pcar2_soma,
-        Dcar1, Dcar1_soma, Dcar2, Dcar2_soma,
-        Pturn, Phit, Phit_soma, Pstay, Pbust,
-        Dturn, Dhit, Dhit_soma, Dstay, Dbust,
-        Plose_s, Pwin_s, Tie_s, --adicionados estados para referenciar as saidas
-        winner, dummyP1, dummyP2, dummyD1, dummyD2,
-        dummyPh, dummyDh
+        Player_card1, Player_card1_soma, Player_card2, Player_card2_soma,
+        Dealer_card1, Dealer_card1_soma, Dealer_card2, Dealer_card2_soma,
+        player_turn, playerHit, playerHit_soma, playerStay, playerBust,
+        dealer_turn, dealerHit, dealerHit_soma, dealerStay, dealerBust,
+        playerLose, playerWin, playerTie, --adicionados estados para referenciar as saidas
+        decideWinner, dummy_Player_card1, dummy_Player_card2, dummyDealer_card1, dummyDealer_card2,
+        dummy_playerHit, dummy_dealerHit
     );
     signal current_state : state_type; 
 
@@ -70,37 +69,32 @@ begin
         if start = '0' then
         playerValue  <= 0;
         dealerValue  <= 0;
-        possuiAce    <= false;
+        hasAce    <= false;
         cardValue    <= 0;
-        randomCard   <= 0;
-        current_state <= Pcar1;
+        current_state <= Player_card1;
 
         elsif falling_edge(clk) then
-            --atribuicao do valor de CARD para o cardvalue toda descida do clock
-            --importante pois as atribuicoes utilizadas sao feitas considerando
-            -- o valor inteiro de CARD e nao o STD logic vector
-				randomCard <= to_integer(unsigned(CARD)) + 1;
+
             case current_state is
-                when Pcar1 => 
+                when Player_card1 => --ok
                     playerValue  <= 0;
                     dealerValue  <= 0;
-                    possuiAce    <= false;
-                    randomCard   <= 0;
+                    hasAce    <= false;
                     cardValue <= 0;
-                    current_state <= dummyP1;
+                    current_state <= dummy_Player_card1;
                 
-                when dummyP1 =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyP1;
+                when dummy_Player_card1 => --ok
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummy_Player_card1;
                     else
-                        current_state <= Pcar1_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= Player_card1_soma;
                     end if;
 
-                when Pcar1_soma =>
+                when Player_card1_soma => --ok
                     if cardValue = 1 then
                         playerValue <= playerValue + 11;
-                        possuiAce <= true;
+                        hasAce <= true;
                     elsif cardValue > 10 then
                         playerValue <= playerValue + 10;
                     else
@@ -108,24 +102,24 @@ begin
                     end if;
 
                     -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
-                    current_state <= Pcar2;
-                when Pcar2 =>
+                    current_state <= Player_card2;
+                when Player_card2 => --ok
                     cardValue <= 0;
-                    current_state <= dummyP2;
+                    current_state <= dummy_Player_card2;
 
-                when dummyP2 =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyP2;
+                when dummy_Player_card2 => --ok
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummy_Player_card2;
                     else
-                        current_state <= Pcar2_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= Player_card2_soma;
                     end if;
 
-                when Pcar2_soma =>
+                when Player_card2_soma => --ok
                     if cardValue = 1 then
                         if ( playerValue + 11 <= 21 ) then
                             playerValue <= playerValue + 11;
-                            possuiAce <= true;
+                            hasAce <= true;
                         elsif ( playerValue + 11 > 21) then 
                         --tratada a unica possibilidade de estouro nesse estado, soma 22 com 2 ases
                             playerValue <= playerValue + cardValue;  -- soma o as como 1
@@ -136,84 +130,82 @@ begin
 								playerValue <= playerValue + cardValue;
                     end if;
 
-                    current_state <= Pturn;
-                when Pturn =>
+                    current_state <= player_turn;
+                when player_turn => --ok
                     if HIT = '1' then
-                        current_state <= Phit;
+                        current_state <= playerHit;
                     elsif STAY = '1' then
-                        current_state <= Pstay;
+                        current_state <= playerStay;
                     else
-                        current_state <= Pturn;                                      
+                        current_state <= player_turn;                                      
                     end if;
-                when Phit =>
+                when playerHit => --ok
                     cardValue <= 0;
-                    current_state <= dummyPh;
+                    current_state <= dummy_playerHit;
 
-                when dummyPh =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyP2;
+                when dummy_playerHit => --ok
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummy_playerHit;
                     else
-                        current_state <= Phit_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= playerHit_soma;
                     end if;
 
-
-
-                when Phit_soma =>
+                when playerHit_soma => --ok
                     if cardValue = 1 then --se for as
                         if ( playerValue + 11 <= 21 ) then
                             playerValue <= playerValue + 11; --soma o as como 11
-                            possuiAce <= true;
-                            current_state <= Pturn;
+                            hasAce <= true;
+                            current_state <= player_turn;
                         elsif ( playerValue + cardValue <= 21) then 
                             playerValue <= playerValue + cardValue;  -- soma o as como 1
                         else
-                            current_state <= Pbust; -- o as como 1 deu bust na soma
+                            current_state <= playerBust; -- o as como 1 deu bust na soma
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if playerValue + 10 <= 21 then
                         playerValue <= playerValue + 10;
-                        current_state <= Pturn;
-                        elsif ( playerValue + 10 > 21 and possuiAce ) then --estoura com uma figura, possui as
-                            possuiAce <= false;
-                            current_state <= Pturn;
+                        current_state <= player_turn;
+                        elsif ( playerValue + 10 > 21 and hasAce ) then --estoura com uma figura, possui as
+                            hasAce <= false;
+                            current_state <= player_turn;
                         else -- estoura com uma figura, nao possui as
-                            current_state <= Pbust;
+                            current_state <= playerBust;
                         end if;
                     else -- se for qualquer outra carta
                         if playerValue + cardValue <= 21 then
                             playerValue <= playerValue + cardValue;
-                            current_state <= Pturn;
-                        elsif playerValue + cardValue > 21 and possuiAce then --estoura e tem as
-                            possuiAce <= false;
+                            current_state <= player_turn;
+                        elsif playerValue + cardValue > 21 and hasAce then --estoura e tem as
+                            hasAce <= false;
                             playerValue <= playerValue - 10 + cardValue;
-                            current_state <= Pturn;
+                            current_state <= player_turn;
                         else -- estoura e nao tem as
-                            current_state <= Pbust;
+                            current_state <= playerBust;
                         end if;
                     end if;
-                when Pstay =>
-                    possuiAce <= false;
-                    current_state <= Dcar1;
-                when Pbust =>
-                    current_state <= Plose_s; -- add estado de plose na transicao
+                when playerStay => --ok
+                    hasAce <= false;
+                    current_state <= Dealer_card1;
+                when playerBust => --ok
+                    current_state <= playerLose; -- add estado de plose na transicao
                     
-                when Dcar1 => 
+                when Dealer_card1 => --ok
                     cardValue <= 0;
-                    current_state <= Dcar1_soma;
+                    current_state <= dummyDealer_card1;
 
-                when dummyD1 =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyD1;
+                when dummyDealer_card1 => --ok
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummyDealer_card1;
                     else
-                        current_state <= Dcar1_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= Dealer_card1_soma;
                     end if;
 
-                when Dcar1_soma =>
+                when Dealer_card1_soma => --ok
                     if cardValue = 1 then
                         dealerValue <= dealerValue + 11;
-                        possuiAce <= true;
+                        hasAce <= true;
                     elsif cardValue > 10 then
                         dealerValue <= dealerValue + 10;
                     else
@@ -221,24 +213,24 @@ begin
                     end if;
                     -- nao possui logica de estouro porque o maximo nesse estado eh 11 na soma
 
-                    current_state <= Dcar2;
-                when Dcar2 =>
+                    current_state <= Dealer_card2;
+                when Dealer_card2 => --ok
                     cardValue <= 0;
-                    current_state <= Dcar2_soma;
+                    current_state <= dummyDealer_card2;
 
-                when dummyD2 =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyD2;
+                when dummyDealer_card2 => --ok
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummyDealer_card2;
                     else
-                        current_state <= Dcar2_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= Dealer_card2_soma;
                     end if;
 
-                when Dcar2_soma =>
+                when Dealer_card2_soma => --ok
                     if cardValue = 1 then
                         if ( dealerValue + 11 <= 21 ) then
                             dealerValue <= dealerValue + 11;
-                            possuiAce <= true;
+                            hasAce <= true;
                         elsif ( dealerValue + 11 > 21) then 
                         --tratada a unica possibilidade de estouro nesse estado, soma 22 com 2 ases
                             dealerValue <= dealerValue + cardValue;  -- soma o as como 1
@@ -248,84 +240,84 @@ begin
 					     else 
 								dealerValue <= dealerValue + cardValue;
                     end if;
-                    current_state <= Dturn;
+                    current_state <= dealer_turn;
 
 
-                when Dturn =>
+                when dealer_turn => --ok
                     if dealerValue < 17 then
-                        current_state <= Dhit;
+                        current_state <= dealerHit;
                     elsif dealerValue >= 17 then
-                        current_state <= Dstay;
+                        current_state <= dealerStay;
                     else
-                        current_state <= Dturn;                                      
+                        current_state <= dealer_turn;                             
                     end if;
-                when Dhit =>
+                when dealerHit => --ok
                     cardValue <= 0;
-                    current_state <= Dhit_soma;
+                    current_state <= dummy_dealerHit;
 
-                when dummyDh =>
-                    cardValue <= randomCard;
-                    if cardValue = 0 then
-                        current_state <= dummyDh;
+                when dummy_dealerHit =>
+                    if to_integer(unsigned(CARD)) = 0 then
+                        current_state <= dummy_dealerHit;
                     else
-                        current_state <= Dhit_soma;
+                        cardValue <= to_integer(unsigned(CARD));
+                        current_state <= dealerHit_soma;
                     end if;
 
                 
-                when Dhit_soma =>
+                when dealerHit_soma => --ok
                     if cardValue = 1 then --se for as
                         if ( dealerValue + 11 <= 21 ) then
                             dealerValue <= dealerValue + 11; --soma o as como 11
-                            possuiAce <= true;
-                            current_state <= Dturn;
+                            hasAce <= true;
+                            current_state <= dealer_turn;
                         elsif ( dealerValue + cardValue <= 21) then 
                             dealerValue <= dealerValue + cardValue;  -- soma o as como 1
                         else
-                            current_state <= Dbust; -- o as como 1 deu bust na soma
+                            current_state <= dealerBust; -- o as como 1 deu bust na soma
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if dealerValue + 10 <= 21 then
                         dealerValue <= dealerValue + 10;
-                        current_state <= Dturn;
-                        elsif ( dealerValue + 10 > 21 and possuiAce ) then --estoura com uma figura, possui as
-                            possuiAce <= false;
-                            current_state <= Dturn;
+                        current_state <= dealer_turn;
+                        elsif ( dealerValue + 10 > 21 and hasAce ) then --estoura com uma figura, possui as
+                            hasAce <= false;
+                            current_state <= dealer_turn;
                         else -- estoura com uma figura, nao possui as
-                            current_state <= Dbust;
+                            current_state <= dealerBust;
                         end if;
                     else -- se for qualquer outra carta
                         if dealerValue + cardValue <= 21 then
                             dealerValue <= dealerValue + cardValue;
-                            current_state <= Dturn;
-                        elsif dealerValue + cardValue > 21 and possuiAce then --estoura e tem as
-                            possuiAce <= false;
+                            current_state <= dealer_turn;
+                        elsif dealerValue + cardValue > 21 and hasAce then --estoura e tem as
+                            hasAce <= false;
                             dealerValue <= dealerValue - 10 + cardValue;
-                            current_state <= Dturn;
+                            current_state <= dealer_turn;
                         else -- estoura e nao tem as
-                            current_state <= Dbust;
+                            current_state <= dealerBust;
                         end if;
                     end if;
                     
-                when Dstay =>
-                    current_state <= winner;
-                when Dbust =>
-                --para chegar no dbust, o player precisa ter mandado '1' no stay
+                when dealerStay => --ok
+                    current_state <= decideWinner;
+                when dealerBust => --ok
+                --para chegar no dealerBust, o player precisa ter mandado '1' no stay
                 --sem ter dado bust, entao eh vitoria imediata pro player
-                    current_state <= Pwin_s; --add estado de pwin na transicao
-                when winner =>
-                --mudanca do estado winner para transicionar
+                    current_state <= playerWin; --add estado de pwin na transicao
+                when decideWinner => --ok
+                --mudanca do estado decideWinner para transicionar
                 --para os novos estados pwin, plose, tie
                 --importante porque a logica tava misturada e esse
                 --estado estava mexendo diretamente nas saidas da FPGA
                     if playerValue > dealerValue then
-                        current_state <= Pwin_s; 
+                        current_state <= playerWin; 
                     elsif playerValue < dealerValue then
-                        current_state <= Plose_s;
+                        current_state <= playerLose;
                     else
-                        current_state <= Tie_s;
+                        current_state <= playerTie;
                     end if;
-						when Pwin_s | Plose_s | tie_s =>
-							current_state <= Pcar1;
+					when playerWin | playerLose | playerTie =>
+						current_state <= Player_card1; --recomeça o jogo
                 when others => null;
             end case;
         end if;
@@ -333,48 +325,63 @@ begin
 
 process(current_state) is
 begin
-	PWIN <= '0';
-	PLOSE <= '0';
-	TIE <= '0';
-	hexCard <= "1000000";
-	sumDigit1 <= "1000000";
-	sumDigit2 <= "1000000";
+    PWIN <= '0';
+    PLOSE <= '0';
+    TIE <= '0';
+    REQCARD <= '0'; -- REQCARD é 0 por padrão, só vai para 1 quando pedir carta.
+    hexCard <= hex_to_7seg(0); -- Display de carta mostra 0 por padrão.
+    sumDigit1 <= hex_to_7seg(0); -- Display de dezena da soma mostra 0 por padrão.
+    sumDigit2 <= hex_to_7seg(0);
     case current_state is
-
-        when Pcar1 | Dcar1 =>
-            PWIN <= '0'; 
-            PLOSE <= '0';
-            TIE <= '0'; 
+            
+        when Player_card1 | Player_card2 | playerHit | Dealer_card1 | Dealer_card2 | dealerHit =>
             REQCARD <= '1';
-            --agora zera os displays no comeco da rodada
-            hexCard   <= "1000000";
-            sumDigit1 <= "1000000";
-            sumDigit2 <= "1000000";
+            if current_state = Player_card2 or current_state = playerHit then
+                hexCard <= hex_to_7seg(cardValue);
+                sumDigit1 <= hex_to_7seg(playerValue/10);
+                sumDigit2 <= hex_to_7seg(playerValue mod 10);
+            elsif current_state = Dealer_card2 or current_state = dealerHit then
+                hexCard <= hex_to_7seg(cardValue);
+                sumDigit1 <= hex_to_7seg(dealerValue/10);
+                sumDigit2 <= hex_to_7seg(dealerValue mod 10);
+            end if;
 
-        when Dcar2 | Pcar2 | Dhit | Phit =>
-            REQCARD <= '1'; --so da trigger na maquina de gerar cartas
+            when dummy_Player_card1 | dummy_Player_card2 | dummy_playerHit | dummyDealer_card1 | dummyDealer_card2 | dummy_dealerHit =>
+                REQCARD <= '0';
+                hexCard <= hex_to_7seg(0); -- Zera a carta temporariamente enquanto espera a nova.
+                if current_state = dummy_Player_card2 or current_state = dummy_playerHit then
+                    sumDigit1 <= hex_to_7seg(playerValue/10);
+                    sumDigit2 <= hex_to_7seg(playerValue mod 10);
+                elsif current_state = dummyDealer_card2 or current_state = dummy_dealerHit then
+                    sumDigit1 <= hex_to_7seg(dealerValue/10);
+                    sumDigit2 <= hex_to_7seg(dealerValue mod 10);
+                end if;
 
-        when Pcar1_soma | Pcar2_soma | Phit_soma => --add turn aqui
+        when Player_card1_soma | Player_card2_soma | playerHit_soma |
+            Dealer_card1_soma | Dealer_card2_soma | dealerHit_soma  =>
             REQCARD <= '0';
-            hexCard <= hex_to_7seg(cardValue);
-            sumDigit1 <= hex_to_7seg(playerValue/10);
-            sumDigit2 <= hex_to_7seg(playerValue mod 10);
+            if current_state = Player_card1_soma or current_state = Player_card2_soma or current_state = playerHit_soma then
+                REQCARD <= '0';
+                hexCard <= hex_to_7seg(cardValue);
+                sumDigit1 <= hex_to_7seg(playerValue/10);
+                sumDigit2 <= hex_to_7seg(playerValue mod 10);
+            elsif current_state = Dealer_card1_soma or current_state = Dealer_card2_soma or current_state = dealerHit_soma then
+                REQCARD <= '0';
+                hexCard <= hex_to_7seg(cardValue);
+                sumDigit1 <= hex_to_7seg(dealerValue/10);
+                sumDigit2 <= hex_to_7seg(dealerValue mod 10);
 
-        when Dcar1_soma | Dcar2_soma | Dhit_soma => --add turn aqui
-            REQCARD <= '0';
-            hexCard <= hex_to_7seg(cardValue);
-            sumDigit1 <= hex_to_7seg(dealerValue/10);
-            sumDigit2 <= hex_to_7seg(dealerValue mod 10);
+            end if;
 
-        when Dbust | Pwin_s =>
+        when dealerBust | playerWin =>
             PWIN <= '1';
             PLOSE <= '0'; 
             TIE <= '0'; 
-        when Pbust | Plose_s =>
+        when playerBust | playerLose =>
             PWIN <= '0'; 
             PLOSE <= '1'; 
             TIE <= '0'; 
-        when tie_s =>
+        when playerTie =>
             PWIN <= '0'; 
             PLOSE <= '0'; 
             TIE <= '1';
