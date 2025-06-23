@@ -4,21 +4,21 @@ use ieee.numeric_std.all;
 
 entity cards is
     port (
-        clk     : in  std_logic;
-        reset   : in  std_logic; 
-        reqCarta : in  std_logic; 
-        reqManual : in  std_logic; 
-        cartaManual : in  std_logic_vector(3 downto 0);
-        cartaFinal : out std_logic_vector(3 downto 0) 
+        clk         : in  std_logic;
+        reset       : in  std_logic; 
+        reqCard    : in  std_logic; 
+        reqManual   : in  std_logic; 
+        cardManual : in  std_logic_vector(3 downto 0);
+        cardFinal  : out std_logic_vector(3 downto 0) 
     );
 end cards;
 
 architecture Behavioral of cards is
-    type state_type is (idle, geraCarta,leCarta);
+    type state_type is (idle, generateCard, readCard);
     signal current_state : state_type; 
     signal lfsr : std_logic_vector(15 downto 0) := "1010110010100000";  -- SEED
     signal rnd_int : integer range 1 to 52; 
-    signal random_number, cartaGerada : std_logic_vector(3 downto 0);
+    signal random_number : std_logic_vector(3 downto 0);
 begin
 
     process(clk, reset)
@@ -28,23 +28,26 @@ begin
             current_state <= idle;
         elsif falling_edge(clk) then
             case current_state is
-            when idle =>
-                if reqCarta = '1' then
-                    current_state <= geraCarta;
-                else
-                    current_state <= idle; 
-                end if;
-            when geraCarta => -- add transicao de rand de volta para idle
-                if reqManual = '0' then 
-                    lfsr <= lfsr(14 downto 0) & 
-                    (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
-                    rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
-                    random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
-                end if;
-                    current_state <= leCarta;
-                when leCarta =>
+                when idle =>
+                    if reqCard = '1' then
+                        current_state <= generateCard;
+                    else
+                        current_state <= idle; 
+                    end if;
+
+                when generateCard =>
+                    if reqManual = '0' then 
+                        lfsr <= lfsr(14 downto 0) & 
+                            (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
+                        rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
+                        random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
+                    end if;
+                    current_state <= readCard;
+
+                when readCard =>
                     current_state <= idle;
-				when others => null;
+
+                when others => null;
             end case;
         end if;
     end process;
@@ -53,18 +56,19 @@ begin
     begin
         case current_state is 
             when idle =>
-                cartaFinal <= (others => '0'); --correcao da atribuicao da carta na saida
-            when geraCarta =>
+                cardFinal <= (others => '0'); -- zera
+
+            when readCard =>
                 if reqManual = '0' then
-                    cartaFinal <= random_number;
+                    cardFinal <= random_number;
                 else
-                    cartaFinal(0) <= cartaManual(0);
-                    cartaFinal(1) <= cartaManual(1);
-                    cartaFinal(2) <= cartaManual(2);
-                    cartaFinal(3) <= cartaManual(3);                    
+                    cardFinal(0) <= cardManual(0);
+                    cardFinal(1) <= cardManual(1);
+                    cardFinal(2) <= cardManual(2);
+                    cardFinal(3) <= cardManual(3);
                 end if;
-			when others => null;
+
+            when others => null;
         end case;
     end process;
-
 end Behavioral;
