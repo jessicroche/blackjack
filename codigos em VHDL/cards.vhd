@@ -41,6 +41,8 @@ begin
                         (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
                         rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
                         random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
+                    elsif reqManual = '1' and cardManual = "0000" then --sai do loop quando a carta=0000
+                        current_state <= idle;
                     end if;
                     current_state <= readCard;
 
@@ -57,7 +59,6 @@ begin
         case current_state is 
             when idle =>
                 cardFinal <= (others => '0'); -- zera
-
             when readCard =>
                 if reqManual = '0' then
                     cardFinal <= random_number;
