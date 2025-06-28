@@ -160,7 +160,12 @@ begin
                             playerValue <= playerValue + cardValue;  -- soma o as como 1
 									 current_state <= player_turn;
                         else
-                            current_state <= playerLose; -- o as como 1 deu bust na soma
+                            if(hasAce) then
+                                playerValue <= playerValue - 10;
+                                current_state <= player_turn;
+                            else
+                                current_state <= playerLose; -- o as como 1 deu bust na soma
+                            end if;
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if playerValue + 10 <= 21 then
@@ -270,7 +275,12 @@ begin
                             dealerValue <= dealerValue + cardValue;  -- soma o as como 1
 									 current_state <= dealer_turn;
                         else
-                            current_state <= playerWin; -- o as como 1 deu bust na soma
+							if(hasAce) then
+								dealerValue <= dealerValue - 10;
+								current_state <= dealer_turn;
+							else
+								current_state <= playerLose; -- o as como 1 deu bust na soma
+							end if;
                         end if;
                     elsif cardValue > 10 then --se for figura
                         if dealerValue + 10 <= 21 then
