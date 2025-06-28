@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Jun 27 18:10:22 2025
+Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Revision Name : top_blackjack
+Top-level Entity Name : top_blackjack
+Family : Cyclone II
+Total logic elements : 5,860
+    Total combinational functions : 5,846
+    Dedicated logic registers : 120
+Total registers : 120
+Total pins : 45
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

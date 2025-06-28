@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri Jun 27 18:10:48 2025
+Quartus II 64-Bit Version : 13.0.0 Build 156 04/24/2013 SJ Web Edition
+Revision Name : top_blackjack
+Top-level Entity Name : top_blackjack
+Family : Cyclone II
+Device : EP2C20F484C7
+Timing Models : Final
+Total logic elements : 5,857 / 18,752 ( 31 % )
+    Total combinational functions : 5,846 / 18,752 ( 31 % )
+    Dedicated logic registers : 120 / 18,752 ( < 1 % )
+Total registers : 120
+Total pins : 45 / 315 ( 14 % )
+Total virtual pins : 0
+Total memory bits : 0 / 239,616 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 52 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

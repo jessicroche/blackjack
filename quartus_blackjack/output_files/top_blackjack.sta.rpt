@@ -1,0 +1,1444 @@
+TimeQuest Timing Analyzer report for top_blackjack
+Fri Jun 27 18:10:53 2025
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'KEY[0]'
+ 12. Slow Model Setup: 'cards:cards_inst|current_state.generateCard'
+ 13. Slow Model Hold: 'KEY[0]'
+ 14. Slow Model Hold: 'cards:cards_inst|current_state.generateCard'
+ 15. Slow Model Minimum Pulse Width: 'KEY[0]'
+ 16. Slow Model Minimum Pulse Width: 'cards:cards_inst|current_state.generateCard'
+ 17. Setup Times
+ 18. Hold Times
+ 19. Clock to Output Times
+ 20. Minimum Clock to Output Times
+ 21. Fast Model Setup Summary
+ 22. Fast Model Hold Summary
+ 23. Fast Model Recovery Summary
+ 24. Fast Model Removal Summary
+ 25. Fast Model Minimum Pulse Width Summary
+ 26. Fast Model Setup: 'KEY[0]'
+ 27. Fast Model Setup: 'cards:cards_inst|current_state.generateCard'
+ 28. Fast Model Hold: 'KEY[0]'
+ 29. Fast Model Hold: 'cards:cards_inst|current_state.generateCard'
+ 30. Fast Model Minimum Pulse Width: 'KEY[0]'
+ 31. Fast Model Minimum Pulse Width: 'cards:cards_inst|current_state.generateCard'
+ 32. Setup Times
+ 33. Hold Times
+ 34. Clock to Output Times
+ 35. Minimum Clock to Output Times
+ 36. Multicorner Timing Analysis Summary
+ 37. Setup Times
+ 38. Hold Times
+ 39. Clock to Output Times
+ 40. Minimum Clock to Output Times
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                       ;
++--------------------+----------------------------------------------------+
+; Quartus II Version ; Version 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name      ; top_blackjack                                      ;
+; Device Family      ; Cyclone II                                         ;
+; Device Name        ; EP2C20F484C7                                       ;
+; Timing Models      ; Final                                              ;
+; Delay Model        ; Combined                                           ;
+; Rise/Fall Delays   ; Unavailable                                        ;
++--------------------+----------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                   ;
++---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
+; Clock Name                                  ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                         ;
++---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
+; cards:cards_inst|current_state.generateCard ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { cards:cards_inst|current_state.generateCard } ;
+; KEY[0]                                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { KEY[0] }                                      ;
++---------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------------------------------+
+
+
++------------------------------------------------+
+; Slow Model Fmax Summary                        ;
++----------+-----------------+------------+------+
+; Fmax     ; Restricted Fmax ; Clock Name ; Note ;
++----------+-----------------+------------+------+
+; 20.5 MHz ; 20.5 MHz        ; KEY[0]     ;      ;
++----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------------------------------------------+
+; Slow Model Setup Summary                                              ;
++---------------------------------------------+---------+---------------+
+; Clock                                       ; Slack   ; End Point TNS ;
++---------------------------------------------+---------+---------------+
+; KEY[0]                                      ; -47.787 ; -998.224      ;
+; cards:cards_inst|current_state.generateCard ; -2.648  ; -10.496       ;
++---------------------------------------------+---------+---------------+
+
+
++----------------------------------------------------------------------+
+; Slow Model Hold Summary                                              ;
++---------------------------------------------+--------+---------------+
+; Clock                                       ; Slack  ; End Point TNS ;
++---------------------------------------------+--------+---------------+
+; KEY[0]                                      ; -2.016 ; -25.522       ;
+; cards:cards_inst|current_state.generateCard ; 2.239  ; 0.000         ;
++---------------------------------------------+--------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width Summary                               ;
++---------------------------------------------+--------+---------------+
+; Clock                                       ; Slack  ; End Point TNS ;
++---------------------------------------------+--------+---------------+
+; KEY[0]                                      ; -1.469 ; -148.109      ;
+; cards:cards_inst|current_state.generateCard ; 0.500  ; 0.000         ;
++---------------------------------------------+--------+---------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'KEY[0]'                                                                                                                                         ;
++---------+-----------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                               ; To Node                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -47.787 ; cards:cards_inst|lfsr[14]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.060      ; 48.885     ;
+; -47.732 ; cards:cards_inst|lfsr[12]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.060      ; 48.830     ;
+; -47.684 ; cards:cards_inst|lfsr[14]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.656     ;
+; -47.651 ; cards:cards_inst|lfsr[13]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.060      ; 48.749     ;
+; -47.629 ; cards:cards_inst|lfsr[12]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.601     ;
+; -47.548 ; cards:cards_inst|lfsr[13]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.520     ;
+; -47.504 ; cards:cards_inst|lfsr[15]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.060      ; 48.602     ;
+; -47.401 ; cards:cards_inst|lfsr[15]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.373     ;
+; -47.339 ; cards:cards_inst|lfsr[14]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.311     ;
+; -47.284 ; cards:cards_inst|lfsr[12]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.256     ;
+; -47.203 ; cards:cards_inst|lfsr[13]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.175     ;
+; -47.056 ; cards:cards_inst|lfsr[15]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 48.028     ;
+; -46.852 ; cards:cards_inst|lfsr[14]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 47.824     ;
+; -46.797 ; cards:cards_inst|lfsr[12]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 47.769     ;
+; -46.716 ; cards:cards_inst|lfsr[13]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 47.688     ;
+; -46.569 ; cards:cards_inst|lfsr[15]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 47.541     ;
+; -45.365 ; cards:cards_inst|lfsr[11]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.060      ; 46.463     ;
+; -45.262 ; cards:cards_inst|lfsr[11]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 46.234     ;
+; -44.917 ; cards:cards_inst|lfsr[11]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 45.889     ;
+; -44.430 ; cards:cards_inst|lfsr[11]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.066     ; 45.402     ;
+; -43.166 ; cards:cards_inst|lfsr[10]               ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.183      ; 44.387     ;
+; -43.063 ; cards:cards_inst|lfsr[10]               ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 44.158     ;
+; -42.718 ; cards:cards_inst|lfsr[10]               ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 43.813     ;
+; -42.231 ; cards:cards_inst|lfsr[10]               ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 43.326     ;
+; -38.999 ; cards:cards_inst|lfsr[9]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.027      ; 40.064     ;
+; -38.896 ; cards:cards_inst|lfsr[9]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.099     ; 39.835     ;
+; -38.551 ; cards:cards_inst|lfsr[9]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.099     ; 39.490     ;
+; -38.064 ; cards:cards_inst|lfsr[9]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.099     ; 39.003     ;
+; -35.603 ; cards:cards_inst|lfsr[8]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.183      ; 36.824     ;
+; -35.500 ; cards:cards_inst|lfsr[8]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 36.595     ;
+; -35.155 ; cards:cards_inst|lfsr[8]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 36.250     ;
+; -34.668 ; cards:cards_inst|lfsr[8]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.057      ; 35.763     ;
+; -32.343 ; cards:cards_inst|lfsr[7]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.099      ; 33.480     ;
+; -32.240 ; cards:cards_inst|lfsr[7]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 33.251     ;
+; -31.895 ; cards:cards_inst|lfsr[7]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 32.906     ;
+; -31.408 ; cards:cards_inst|lfsr[7]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 32.419     ;
+; -28.509 ; cards:cards_inst|lfsr[6]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.091      ; 29.638     ;
+; -28.406 ; cards:cards_inst|lfsr[6]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 29.409     ;
+; -28.061 ; cards:cards_inst|lfsr[6]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 29.064     ;
+; -27.574 ; cards:cards_inst|lfsr[6]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 28.577     ;
+; -24.699 ; cards:cards_inst|lfsr[5]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.091      ; 25.828     ;
+; -24.596 ; cards:cards_inst|lfsr[5]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 25.599     ;
+; -24.251 ; cards:cards_inst|lfsr[5]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 25.254     ;
+; -23.764 ; cards:cards_inst|lfsr[5]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 24.767     ;
+; -21.145 ; cards:cards_inst|lfsr[4]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.091      ; 22.274     ;
+; -21.042 ; cards:cards_inst|lfsr[4]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 22.045     ;
+; -20.697 ; cards:cards_inst|lfsr[4]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 21.700     ;
+; -20.210 ; cards:cards_inst|lfsr[4]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 21.213     ;
+; -16.994 ; cards:cards_inst|lfsr[3]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.091      ; 18.123     ;
+; -16.891 ; cards:cards_inst|lfsr[3]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 17.894     ;
+; -16.546 ; cards:cards_inst|lfsr[3]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 17.549     ;
+; -16.059 ; cards:cards_inst|lfsr[3]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.035     ; 17.062     ;
+; -12.933 ; cards:cards_inst|lfsr[2]                ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.099      ; 14.070     ;
+; -12.830 ; cards:cards_inst|lfsr[2]                ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 13.841     ;
+; -12.485 ; cards:cards_inst|lfsr[2]                ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 13.496     ;
+; -11.998 ; cards:cards_inst|lfsr[2]                ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.027     ; 13.009     ;
+; -11.204 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|playerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.567     ;
+; -11.159 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|playerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.522     ;
+; -11.114 ; blackjack:blackjack_inst|cardValue[3]   ; blackjack:blackjack_inst|playerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.477     ;
+; -11.093 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|playerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.456     ;
+; -11.012 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|playerValue[3]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.317     ;
+; -10.967 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|playerValue[3]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.272     ;
+; -10.945 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.618     ;
+; -10.945 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.618     ;
+; -10.945 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.618     ;
+; -10.945 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.618     ;
+; -10.930 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|playerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.293     ;
+; -10.922 ; blackjack:blackjack_inst|cardValue[3]   ; blackjack:blackjack_inst|playerValue[3]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.227     ;
+; -10.901 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|playerValue[3]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.206     ;
+; -10.885 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|playerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.248     ;
+; -10.866 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.539     ;
+; -10.866 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.539     ;
+; -10.866 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.539     ;
+; -10.866 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.539     ;
+; -10.840 ; blackjack:blackjack_inst|cardValue[3]   ; blackjack:blackjack_inst|playerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.203     ;
+; -10.819 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|playerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.182     ;
+; -10.810 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|playerValue[4]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.173     ;
+; -10.801 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[25] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.664     ;
+; -10.801 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[26] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.664     ;
+; -10.801 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[27] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.664     ;
+; -10.801 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[28] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.664     ;
+; -10.787 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|playerValue[2]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.092     ;
+; -10.765 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|playerValue[4]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.128     ;
+; -10.742 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|playerValue[2]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.733     ; 11.047     ;
+; -10.734 ; blackjack:blackjack_inst|dealerValue[1] ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.237     ; 11.535     ;
+; -10.734 ; blackjack:blackjack_inst|dealerValue[1] ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.237     ; 11.535     ;
+; -10.734 ; blackjack:blackjack_inst|dealerValue[1] ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.237     ; 11.535     ;
+; -10.734 ; blackjack:blackjack_inst|dealerValue[1] ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.237     ; 11.535     ;
+; -10.725 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[20] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.266     ; 11.497     ;
+; -10.722 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[25] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.585     ;
+; -10.722 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[26] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.585     ;
+; -10.722 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[27] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.585     ;
+; -10.722 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|dealerValue[28] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.175     ; 11.585     ;
+; -10.720 ; blackjack:blackjack_inst|cardValue[3]   ; blackjack:blackjack_inst|playerValue[4]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.083     ;
+; -10.716 ; blackjack:blackjack_inst|cardValue[1]   ; blackjack:blackjack_inst|dealerValue[22] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.266     ; 11.488     ;
+; -10.712 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.385     ;
+; -10.712 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.385     ;
+; -10.712 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.385     ;
+; -10.712 ; blackjack:blackjack_inst|cardValue[0]   ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.365     ; 11.385     ;
+; -10.699 ; blackjack:blackjack_inst|cardValue[2]   ; blackjack:blackjack_inst|playerValue[4]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.675     ; 11.062     ;
++---------+-----------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'cards:cards_inst|current_state.generateCard'                                                                                                                        ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                               ; To Node                       ; Launch Clock ; Latch Clock                                 ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; -2.648 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.639     ; 1.314      ;
+; -2.631 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.638     ; 1.336      ;
+; -2.612 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.639     ; 1.304      ;
+; -2.605 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.639     ; 1.310      ;
+; -2.443 ; cards:cards_inst|random_number[2]       ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.641     ; 1.107      ;
+; -2.420 ; cards:cards_inst|random_number[3]       ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.640     ; 1.123      ;
+; -2.410 ; cards:cards_inst|random_number[1]       ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.641     ; 1.100      ;
+; -2.395 ; cards:cards_inst|random_number[0]       ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.641     ; 1.098      ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'KEY[0]'                                                                                                                                                                                                           ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                 ; To Node                                                   ; Launch Clock                                ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+; -2.016 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|current_state.readCard                   ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.677      ; 2.224      ;
+; -1.516 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|current_state.readCard                   ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.677      ; 2.224      ;
+; -1.463 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.496      ; 2.596      ;
+; -1.280 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.580      ; 2.863      ;
+; -1.280 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.580      ; 2.863      ;
+; -1.280 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.580      ; 2.863      ;
+; -1.268 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.588      ; 2.883      ;
+; -1.268 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.588      ; 2.883      ;
+; -1.268 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.588      ; 2.883      ;
+; -1.268 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.588      ; 2.883      ;
+; -1.268 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[0]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.588      ; 2.883      ;
+; -1.028 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[9]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.652      ; 3.187      ;
+; -0.963 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.496      ; 2.596      ;
+; -0.922 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.496      ; 3.137      ;
+; -0.842 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[1]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.679      ; 3.400      ;
+; -0.842 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[0]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.679      ; 3.400      ;
+; -0.842 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[2]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.679      ; 3.400      ;
+; -0.842 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.679      ; 3.400      ;
+; -0.842 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[3]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.679      ; 3.400      ;
+; -0.780 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.580      ; 2.863      ;
+; -0.780 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.580      ; 2.863      ;
+; -0.780 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.580      ; 2.863      ;
+; -0.768 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.588      ; 2.883      ;
+; -0.768 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.588      ; 2.883      ;
+; -0.768 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.588      ; 2.883      ;
+; -0.768 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.588      ; 2.883      ;
+; -0.768 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[0]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.588      ; 2.883      ;
+; -0.716 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[1]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.553      ; 3.400      ;
+; -0.716 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[0]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.553      ; 3.400      ;
+; -0.716 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.553      ; 3.400      ;
+; -0.711 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[11]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.619      ; 3.471      ;
+; -0.711 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[12]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.619      ; 3.471      ;
+; -0.711 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.619      ; 3.471      ;
+; -0.711 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.619      ; 3.471      ;
+; -0.711 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[15]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 3.619      ; 3.471      ;
+; -0.528 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[9]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.652      ; 3.187      ;
+; -0.422 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.496      ; 3.137      ;
+; -0.342 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[1]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.679      ; 3.400      ;
+; -0.342 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[0]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.679      ; 3.400      ;
+; -0.342 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[2]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.679      ; 3.400      ;
+; -0.342 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.679      ; 3.400      ;
+; -0.342 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[3]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.679      ; 3.400      ;
+; -0.216 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[1]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.553      ; 3.400      ;
+; -0.216 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[0]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.553      ; 3.400      ;
+; -0.216 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.553      ; 3.400      ;
+; -0.211 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[11]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.619      ; 3.471      ;
+; -0.211 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[12]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.619      ; 3.471      ;
+; -0.211 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.619      ; 3.471      ;
+; -0.211 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.619      ; 3.471      ;
+; -0.211 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[15]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 3.619      ; 3.471      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|hasAce                           ; blackjack:blackjack_inst|hasAce                           ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445  ; cards:cards_inst|current_state.idle                       ; cards:cards_inst|current_state.idle                       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.731      ;
+; 0.619  ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|lfsr[5]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.905      ;
+; 0.621  ; blackjack:blackjack_inst|current_state.dealerStay         ; blackjack:blackjack_inst|current_state.decideWinner       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.907      ;
+; 0.768  ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|lfsr[2]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.054      ;
+; 0.774  ; blackjack:blackjack_inst|current_state.playerStay         ; blackjack:blackjack_inst|current_state.Dealer_card1       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.060      ;
+; 0.775  ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|lfsr[4]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.061      ;
+; 0.775  ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|lfsr[6]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.061      ;
+; 0.789  ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; blackjack:blackjack_inst|current_state.Player_card2_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.075      ;
+; 0.811  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; blackjack:blackjack_inst|current_state.dealerHit_soma     ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.097      ;
+; 0.884  ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|lfsr[7]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.008     ; 1.162      ;
+; 0.922  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|cardValue[2]                     ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.643      ; 1.351      ;
+; 0.940  ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; blackjack:blackjack_inst|current_state.Player_card1_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.226      ;
+; 0.955  ; cards:cards_inst|cardFinal[1]                             ; blackjack:blackjack_inst|cardValue[1]                     ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.643      ; 1.384      ;
+; 0.964  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.250      ;
+; 0.965  ; cards:cards_inst|cardFinal[3]                             ; blackjack:blackjack_inst|cardValue[3]                     ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.642      ; 1.393      ;
+; 0.986  ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; blackjack:blackjack_inst|current_state.playerHit_soma     ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.272      ;
+; 1.011  ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|random_number[3]                         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.297      ;
+; 1.017  ; cards:cards_inst|cardFinal[0]                             ; blackjack:blackjack_inst|cardValue[0]                     ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.643      ; 1.446      ;
+; 1.019  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerTie          ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.305      ;
+; 1.061  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerWin          ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.202      ; 1.549      ;
+; 1.135  ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|random_number[2]                         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.126      ; 1.547      ;
+; 1.200  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerLose         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.061      ; 1.547      ;
+; 1.266  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; cards:cards_inst|current_state.idle                       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.552      ;
+; 1.272  ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|lfsr[8]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.084     ; 1.474      ;
+; 1.287  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.016     ; 1.557      ;
+; 1.296  ; blackjack:blackjack_inst|current_state.Player_card2       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 1.372      ; 2.954      ;
+; 1.306  ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|lfsr[14]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.592      ;
+; 1.319  ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|lfsr[15]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.605      ;
+; 1.323  ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|lfsr[3]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.008      ; 1.617      ;
+; 1.376  ; blackjack:blackjack_inst|current_state.playerTie          ; blackjack:blackjack_inst|current_state.Player_card1       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 1.662      ;
+; 1.483  ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|lfsr[9]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.156      ; 1.925      ;
+; 1.492  ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|lfsr[11]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.123      ; 1.901      ;
+; 1.512  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.921      ;
+; 1.513  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.922      ;
+; 1.515  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.playerHit_soma     ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.924      ;
+; 1.518  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.927      ;
+; 1.519  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.Player_card1_soma  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.928      ;
+; 1.520  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|dealerValue[13]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.061      ; 1.867      ;
+; 1.520  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.Player_card2_soma  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.929      ;
+; 1.521  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.623      ; 1.930      ;
+; 1.523  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|dealerValue[14]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.061      ; 1.870      ;
+; 1.523  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.607      ; 1.916      ;
+; 1.523  ; cards:cards_inst|cardFinal[2]                             ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 0.607      ; 1.916      ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'cards:cards_inst|current_state.generateCard'                                                                                                                        ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; Slack ; From Node                               ; To Node                       ; Launch Clock ; Latch Clock                                 ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; 2.239 ; cards:cards_inst|random_number[0]       ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.641     ; 1.098      ;
+; 2.241 ; cards:cards_inst|random_number[1]       ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.641     ; 1.100      ;
+; 2.248 ; cards:cards_inst|random_number[2]       ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.641     ; 1.107      ;
+; 2.263 ; cards:cards_inst|random_number[3]       ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.640     ; 1.123      ;
+; 2.443 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.639     ; 1.304      ;
+; 2.449 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.639     ; 1.310      ;
+; 2.453 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.639     ; 1.314      ;
+; 2.474 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.638     ; 1.336      ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'KEY[0]'                                                                                                    ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock  ; Clock Edge ; Target                                                    ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+; -1.469 ; 1.000        ; 2.469          ; Port Rate        ; KEY[0] ; Rise       ; KEY[0]                                                    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[0]                     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[0]                     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[1]                     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[1]                     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[2]                     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[2]                     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[3]                     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[3]                     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2_soma  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerHit_soma     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerHit_soma     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerStay         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerStay         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealer_turn        ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealer_turn        ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.decideWinner       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.decideWinner       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_playerHit    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_playerHit    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerHit_soma     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerHit_soma     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerLose         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerLose         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerStay         ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerStay         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerTie          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerTie          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerWin          ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerWin          ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.player_turn        ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.player_turn        ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[0]                   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[0]                   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[10]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[10]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[11]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[11]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[12]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[12]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[13]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[13]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[14]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[14]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[15]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[15]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[16]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[16]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[17]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[17]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[18]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[18]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[19]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[19]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[1]                   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[1]                   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[20]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[20]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[21]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[21]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[22]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[22]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[23]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[23]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[24]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[24]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[25]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[25]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[26]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[26]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[27]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[27]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[28]                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[28]                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[29]                  ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'cards:cards_inst|current_state.generateCard'                                                                                                ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock                                       ; Clock Edge ; Target                                                 ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[0]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[0]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[1]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[1]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[2]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[2]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[3]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[3]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[0]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[0]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[1]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[1]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[2]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[2]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[3]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[3]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard|regout           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard|regout           ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|inclk[0] ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|inclk[0] ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|outclk   ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|outclk   ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                        ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise  ; Fall  ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; 6.187 ; 6.187 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; 6.187 ; 6.187 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 1.274 ; 1.274 ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.662 ; 0.662 ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.514 ; 0.514 ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 1.274 ; 1.274 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; 2.228 ; 2.228 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; 1.451 ; 1.451 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; 2.228 ; 2.228 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; 1.971 ; 1.971 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; 2.078 ; 2.078 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; 2.143 ; 2.143 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                           ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise   ; Fall   ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; -5.813 ; -5.813 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; -5.813 ; -5.813 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 0.522  ; 0.522  ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.179  ; 0.179  ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.522  ; 0.522  ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 0.037  ; 0.037  ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; -0.248 ; -0.248 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; -0.248 ; -0.248 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; -1.072 ; -1.072 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; -0.802 ; -0.802 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; -0.883 ; -0.883 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; -0.986 ; -0.986 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Clock to Output Times                                                     ;
++-----------+------------+---------+---------+------------+-----------------+
+; Data Port ; Clock Port ; Rise    ; Fall    ; Clock Edge ; Clock Reference ;
++-----------+------------+---------+---------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 200.758 ; 200.758 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 199.976 ; 199.976 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 200.471 ; 200.471 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 199.890 ; 199.890 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 200.758 ; 200.758 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 199.908 ; 199.908 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 199.643 ; 199.643 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 200.279 ; 200.279 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 144.646 ; 144.646 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 142.296 ; 142.296 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 142.708 ; 142.708 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 143.233 ; 143.233 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 144.646 ; 144.646 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 144.147 ; 144.147 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 144.008 ; 144.008 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 142.150 ; 142.150 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 14.154  ; 14.154  ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 13.949  ; 13.949  ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 14.154  ; 14.154  ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 14.150  ; 14.150  ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 13.249  ; 13.249  ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 13.231  ; 13.231  ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 13.624  ; 13.624  ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 14.016  ; 14.016  ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 7.934   ; 7.934   ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 7.671   ; 7.671   ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 7.385   ; 7.385   ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 7.934   ; 7.934   ; Fall       ; KEY[0]          ;
++-----------+------------+---------+---------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 11.646 ; 11.646 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 12.745 ; 12.745 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 11.977 ; 11.977 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 12.279 ; 12.279 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 13.176 ; 13.176 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 11.646 ; 11.646 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 12.466 ; 12.466 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 12.103 ; 12.103 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 11.053 ; 11.053 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 11.053 ; 11.053 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 11.194 ; 11.194 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 11.813 ; 11.813 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 11.800 ; 11.800 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 11.817 ; 11.817 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 11.851 ; 11.851 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 11.861 ; 11.861 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 10.411 ; 10.411 ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 11.267 ; 11.267 ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 11.475 ; 11.475 ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 11.471 ; 11.471 ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 10.411 ; 10.411 ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 10.553 ; 10.553 ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 10.942 ; 10.942 ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 11.307 ; 11.307 ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 7.385  ; 7.385  ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 7.671  ; 7.671  ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 7.385  ; 7.385  ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 7.934  ; 7.934  ; Fall       ; KEY[0]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Fast Model Setup Summary                                              ;
++---------------------------------------------+---------+---------------+
+; Clock                                       ; Slack   ; End Point TNS ;
++---------------------------------------------+---------+---------------+
+; KEY[0]                                      ; -17.612 ; -331.645      ;
+; cards:cards_inst|current_state.generateCard ; -0.540  ; -2.118        ;
++---------------------------------------------+---------+---------------+
+
+
++----------------------------------------------------------------------+
+; Fast Model Hold Summary                                              ;
++---------------------------------------------+--------+---------------+
+; Clock                                       ; Slack  ; End Point TNS ;
++---------------------------------------------+--------+---------------+
+; KEY[0]                                      ; -1.150 ; -17.293       ;
+; cards:cards_inst|current_state.generateCard ; 1.082  ; 0.000         ;
++---------------------------------------------+--------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width Summary                               ;
++---------------------------------------------+--------+---------------+
+; Clock                                       ; Slack  ; End Point TNS ;
++---------------------------------------------+--------+---------------+
+; KEY[0]                                      ; -1.222 ; -121.222      ;
+; cards:cards_inst|current_state.generateCard ; 0.500  ; 0.000         ;
++---------------------------------------------+--------+---------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'KEY[0]'                                                                                                                                       ;
++---------+---------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                             ; To Node                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+---------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -17.612 ; cards:cards_inst|lfsr[14]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.017      ; 18.661     ;
+; -17.598 ; cards:cards_inst|lfsr[12]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.017      ; 18.647     ;
+; -17.594 ; cards:cards_inst|lfsr[14]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.583     ;
+; -17.580 ; cards:cards_inst|lfsr[12]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.569     ;
+; -17.561 ; cards:cards_inst|lfsr[13]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.017      ; 18.610     ;
+; -17.543 ; cards:cards_inst|lfsr[13]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.532     ;
+; -17.499 ; cards:cards_inst|lfsr[15]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.017      ; 18.548     ;
+; -17.481 ; cards:cards_inst|lfsr[15]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.470     ;
+; -17.480 ; cards:cards_inst|lfsr[14]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.469     ;
+; -17.466 ; cards:cards_inst|lfsr[12]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.455     ;
+; -17.429 ; cards:cards_inst|lfsr[13]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.418     ;
+; -17.367 ; cards:cards_inst|lfsr[15]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.356     ;
+; -17.306 ; cards:cards_inst|lfsr[14]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.295     ;
+; -17.292 ; cards:cards_inst|lfsr[12]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.281     ;
+; -17.255 ; cards:cards_inst|lfsr[13]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.244     ;
+; -17.193 ; cards:cards_inst|lfsr[15]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 18.182     ;
+; -16.735 ; cards:cards_inst|lfsr[11]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.017      ; 17.784     ;
+; -16.717 ; cards:cards_inst|lfsr[11]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 17.706     ;
+; -16.603 ; cards:cards_inst|lfsr[11]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 17.592     ;
+; -16.429 ; cards:cards_inst|lfsr[11]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.043     ; 17.418     ;
+; -15.927 ; cards:cards_inst|lfsr[10]             ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.100      ; 17.059     ;
+; -15.909 ; cards:cards_inst|lfsr[10]             ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.040      ; 16.981     ;
+; -15.795 ; cards:cards_inst|lfsr[10]             ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.040      ; 16.867     ;
+; -15.621 ; cards:cards_inst|lfsr[10]             ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.040      ; 16.693     ;
+; -14.442 ; cards:cards_inst|lfsr[9]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.002     ; 15.472     ;
+; -14.424 ; cards:cards_inst|lfsr[9]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.062     ; 15.394     ;
+; -14.310 ; cards:cards_inst|lfsr[9]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.062     ; 15.280     ;
+; -14.136 ; cards:cards_inst|lfsr[9]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.062     ; 15.106     ;
+; -13.130 ; cards:cards_inst|lfsr[8]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.110      ; 14.272     ;
+; -13.112 ; cards:cards_inst|lfsr[8]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.050      ; 14.194     ;
+; -12.998 ; cards:cards_inst|lfsr[8]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.050      ; 14.080     ;
+; -12.824 ; cards:cards_inst|lfsr[8]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.050      ; 13.906     ;
+; -11.914 ; cards:cards_inst|lfsr[7]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.061      ; 13.007     ;
+; -11.896 ; cards:cards_inst|lfsr[7]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 12.929     ;
+; -11.782 ; cards:cards_inst|lfsr[7]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 12.815     ;
+; -11.608 ; cards:cards_inst|lfsr[7]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 12.641     ;
+; -10.452 ; cards:cards_inst|lfsr[6]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.053      ; 11.537     ;
+; -10.434 ; cards:cards_inst|lfsr[6]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 11.459     ;
+; -10.320 ; cards:cards_inst|lfsr[6]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 11.345     ;
+; -10.146 ; cards:cards_inst|lfsr[6]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 11.171     ;
+; -9.011  ; cards:cards_inst|lfsr[5]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.053      ; 10.096     ;
+; -8.993  ; cards:cards_inst|lfsr[5]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 10.018     ;
+; -8.879  ; cards:cards_inst|lfsr[5]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 9.904      ;
+; -8.705  ; cards:cards_inst|lfsr[5]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 9.730      ;
+; -7.622  ; cards:cards_inst|lfsr[4]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.053      ; 8.707      ;
+; -7.604  ; cards:cards_inst|lfsr[4]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 8.629      ;
+; -7.490  ; cards:cards_inst|lfsr[4]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 8.515      ;
+; -7.316  ; cards:cards_inst|lfsr[4]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 8.341      ;
+; -6.055  ; cards:cards_inst|lfsr[3]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.053      ; 7.140      ;
+; -6.037  ; cards:cards_inst|lfsr[3]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 7.062      ;
+; -5.923  ; cards:cards_inst|lfsr[3]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 6.948      ;
+; -5.749  ; cards:cards_inst|lfsr[3]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.007     ; 6.774      ;
+; -4.450  ; cards:cards_inst|lfsr[2]              ; cards:cards_inst|rnd_int[3]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.061      ; 5.543      ;
+; -4.432  ; cards:cards_inst|lfsr[2]              ; cards:cards_inst|rnd_int[2]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 5.465      ;
+; -4.318  ; cards:cards_inst|lfsr[2]              ; cards:cards_inst|rnd_int[1]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 5.351      ;
+; -4.144  ; cards:cards_inst|lfsr[2]              ; cards:cards_inst|rnd_int[0]              ; KEY[0]       ; KEY[0]      ; 1.000        ; 0.001      ; 5.177      ;
+; -3.783  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.596      ;
+; -3.783  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.596      ;
+; -3.783  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.596      ;
+; -3.783  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.596      ;
+; -3.778  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.591      ;
+; -3.778  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.591      ;
+; -3.778  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.591      ;
+; -3.778  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.591      ;
+; -3.741  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[25] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.627      ;
+; -3.741  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[26] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.627      ;
+; -3.741  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[27] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.627      ;
+; -3.741  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[28] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.627      ;
+; -3.736  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[25] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.622      ;
+; -3.736  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[26] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.622      ;
+; -3.736  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[27] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.622      ;
+; -3.736  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[28] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.622      ;
+; -3.726  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.539      ;
+; -3.726  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.539      ;
+; -3.726  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.539      ;
+; -3.726  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.539      ;
+; -3.699  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|playerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.317     ; 4.414      ;
+; -3.692  ; blackjack:blackjack_inst|cardValue[3] ; blackjack:blackjack_inst|dealerValue[5]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.505      ;
+; -3.692  ; blackjack:blackjack_inst|cardValue[3] ; blackjack:blackjack_inst|dealerValue[6]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.505      ;
+; -3.692  ; blackjack:blackjack_inst|cardValue[3] ; blackjack:blackjack_inst|dealerValue[31] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.505      ;
+; -3.692  ; blackjack:blackjack_inst|cardValue[3] ; blackjack:blackjack_inst|dealerValue[7]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.219     ; 4.505      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[8]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.518      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.518      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[10] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.518      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.518      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[15] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.555      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[16] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.555      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[17] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.555      ;
+; -3.690  ; blackjack:blackjack_inst|cardValue[2] ; blackjack:blackjack_inst|dealerValue[18] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.555      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[8]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.513      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[9]  ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.513      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[10] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.513      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[12] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.204     ; 4.513      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[15] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.550      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[16] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.550      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[17] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.550      ;
+; -3.685  ; blackjack:blackjack_inst|cardValue[1] ; blackjack:blackjack_inst|dealerValue[18] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.167     ; 4.550      ;
+; -3.684  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[25] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.570      ;
+; -3.684  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[26] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.570      ;
+; -3.684  ; blackjack:blackjack_inst|cardValue[0] ; blackjack:blackjack_inst|dealerValue[27] ; KEY[0]       ; KEY[0]      ; 1.000        ; -0.146     ; 4.570      ;
++---------+---------------------------------------+------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'cards:cards_inst|current_state.generateCard'                                                                                                                        ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                               ; To Node                       ; Launch Clock ; Latch Clock                                 ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; -0.540 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.547      ;
+; -0.532 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.531      ;
+; -0.523 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.526      ;
+; -0.523 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.531      ;
+; -0.494 ; cards:cards_inst|random_number[3]       ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.501      ;
+; -0.492 ; cards:cards_inst|random_number[2]       ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.491      ;
+; -0.485 ; cards:cards_inst|random_number[1]       ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.488      ;
+; -0.478 ; cards:cards_inst|random_number[0]       ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; 0.500        ; -0.096     ; 0.486      ;
++--------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'KEY[0]'                                                                                                                                                                                                           ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                 ; To Node                                                   ; Launch Clock                                ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+; -1.150 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|current_state.readCard                   ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 0.926      ;
+; -0.835 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.683      ; 1.141      ;
+; -0.784 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.722      ; 1.231      ;
+; -0.784 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.722      ; 1.231      ;
+; -0.784 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.722      ; 1.231      ;
+; -0.775 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.730      ; 1.248      ;
+; -0.775 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.730      ; 1.248      ;
+; -0.775 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.730      ; 1.248      ;
+; -0.775 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.730      ; 1.248      ;
+; -0.775 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[0]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.730      ; 1.248      ;
+; -0.709 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[9]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.785      ; 1.369      ;
+; -0.650 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|current_state.readCard                   ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 0.926      ;
+; -0.628 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.673      ; 1.338      ;
+; -0.625 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[1]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 1.451      ;
+; -0.625 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[0]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 1.451      ;
+; -0.625 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[2]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 1.451      ;
+; -0.625 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 1.451      ;
+; -0.625 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[3]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.783      ; 1.451      ;
+; -0.583 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[11]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.766      ; 1.476      ;
+; -0.583 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[12]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.766      ; 1.476      ;
+; -0.583 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.766      ; 1.476      ;
+; -0.583 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.766      ; 1.476      ;
+; -0.583 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[15]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.766      ; 1.476      ;
+; -0.568 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[1]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.723      ; 1.448      ;
+; -0.568 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[0]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.723      ; 1.448      ;
+; -0.568 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; 0.000        ; 1.723      ; 1.448      ;
+; -0.335 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.683      ; 1.141      ;
+; -0.284 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.722      ; 1.231      ;
+; -0.284 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.722      ; 1.231      ;
+; -0.284 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.722      ; 1.231      ;
+; -0.275 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.730      ; 1.248      ;
+; -0.275 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.730      ; 1.248      ;
+; -0.275 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.730      ; 1.248      ;
+; -0.275 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.730      ; 1.248      ;
+; -0.275 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[0]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.730      ; 1.248      ;
+; -0.209 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[9]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.785      ; 1.369      ;
+; -0.128 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.673      ; 1.338      ;
+; -0.125 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[1]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 1.451      ;
+; -0.125 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[0]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 1.451      ;
+; -0.125 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[2]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 1.451      ;
+; -0.125 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 1.451      ;
+; -0.125 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|random_number[3]                         ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.783      ; 1.451      ;
+; -0.083 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[11]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.766      ; 1.476      ;
+; -0.083 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[12]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.766      ; 1.476      ;
+; -0.083 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.766      ; 1.476      ;
+; -0.083 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.766      ; 1.476      ;
+; -0.083 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|lfsr[15]                                 ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.766      ; 1.476      ;
+; -0.068 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[1]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.723      ; 1.448      ;
+; -0.068 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[0]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.723      ; 1.448      ;
+; -0.068 ; cards:cards_inst|current_state.generateCard               ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|current_state.generateCard ; KEY[0]      ; -0.500       ; 1.723      ; 1.448      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|hasAce                           ; blackjack:blackjack_inst|hasAce                           ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215  ; cards:cards_inst|current_state.idle                       ; cards:cards_inst|current_state.idle                       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.367      ;
+; 0.241  ; blackjack:blackjack_inst|current_state.dealerStay         ; blackjack:blackjack_inst|current_state.decideWinner       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.393      ;
+; 0.258  ; cards:cards_inst|lfsr[4]                                  ; cards:cards_inst|lfsr[5]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.410      ;
+; 0.290  ; cards:cards_inst|lfsr[3]                                  ; cards:cards_inst|lfsr[4]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.442      ;
+; 0.291  ; cards:cards_inst|lfsr[5]                                  ; cards:cards_inst|lfsr[6]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.443      ;
+; 0.324  ; cards:cards_inst|lfsr[1]                                  ; cards:cards_inst|lfsr[2]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.476      ;
+; 0.328  ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; blackjack:blackjack_inst|current_state.Player_card2_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.480      ;
+; 0.329  ; blackjack:blackjack_inst|current_state.playerStay         ; blackjack:blackjack_inst|current_state.Dealer_card1       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.481      ;
+; 0.341  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; blackjack:blackjack_inst|current_state.dealerHit_soma     ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.493      ;
+; 0.364  ; cards:cards_inst|lfsr[6]                                  ; cards:cards_inst|lfsr[7]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.008     ; 0.508      ;
+; 0.365  ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ; blackjack:blackjack_inst|current_state.Player_card1_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.517      ;
+; 0.377  ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.529      ;
+; 0.378  ; blackjack:blackjack_inst|current_state.dummy_playerHit    ; blackjack:blackjack_inst|current_state.playerHit_soma     ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.530      ;
+; 0.382  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerWin          ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.080      ; 0.614      ;
+; 0.382  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerTie          ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.534      ;
+; 0.418  ; cards:cards_inst|rnd_int[3]                               ; cards:cards_inst|random_number[3]                         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.570      ;
+; 0.421  ; blackjack:blackjack_inst|current_state.decideWinner       ; blackjack:blackjack_inst|current_state.playerLose         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.039      ; 0.612      ;
+; 0.445  ; cards:cards_inst|rnd_int[2]                               ; cards:cards_inst|random_number[2]                         ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.060      ; 0.657      ;
+; 0.460  ; blackjack:blackjack_inst|current_state.Player_card2       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.603      ; 1.215      ;
+; 0.492  ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ; cards:cards_inst|current_state.idle                       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.644      ;
+; 0.504  ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.005     ; 0.651      ;
+; 0.526  ; cards:cards_inst|lfsr[13]                                 ; cards:cards_inst|lfsr[14]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.678      ;
+; 0.527  ; blackjack:blackjack_inst|current_state.playerTie          ; blackjack:blackjack_inst|current_state.Player_card1       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.679      ;
+; 0.531  ; cards:cards_inst|lfsr[7]                                  ; cards:cards_inst|lfsr[8]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.049     ; 0.634      ;
+; 0.531  ; cards:cards_inst|lfsr[14]                                 ; cards:cards_inst|lfsr[15]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.683      ;
+; 0.537  ; cards:cards_inst|lfsr[2]                                  ; cards:cards_inst|lfsr[3]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.008      ; 0.697      ;
+; 0.545  ; cards:cards_inst|lfsr[8]                                  ; cards:cards_inst|lfsr[9]                                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.112      ; 0.809      ;
+; 0.550  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|dealerValue[13]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.038      ; 0.740      ;
+; 0.553  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|dealerValue[14]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.038      ; 0.743      ;
+; 0.555  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|dealerValue[11]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.038      ; 0.745      ;
+; 0.568  ; cards:cards_inst|lfsr[10]                                 ; cards:cards_inst|lfsr[11]                                 ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.083      ; 0.803      ;
+; 0.568  ; blackjack:blackjack_inst|current_state.Dealer_card1       ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.603      ; 1.323      ;
+; 0.582  ; blackjack:blackjack_inst|dealerValue[0]                   ; blackjack:blackjack_inst|dealerValue[0]                   ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.000      ; 0.734      ;
+; 0.583  ; blackjack:blackjack_inst|current_state.playerLose         ; blackjack:blackjack_inst|current_state.Player_card1       ; KEY[0]                                      ; KEY[0]      ; 0.000        ; -0.039     ; 0.696      ;
+; 0.601  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[28]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.070      ; 0.823      ;
+; 0.603  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[27]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.070      ; 0.825      ;
+; 0.603  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[29]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.070      ; 0.825      ;
+; 0.612  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[26]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.780      ;
+; 0.614  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[25]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.782      ;
+; 0.616  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[18]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.784      ;
+; 0.617  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[23]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.785      ;
+; 0.620  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[19]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.788      ;
+; 0.621  ; blackjack:blackjack_inst|current_state.Player_card1       ; blackjack:blackjack_inst|playerValue[20]                  ; KEY[0]                                      ; KEY[0]      ; 0.000        ; 0.016      ; 0.789      ;
++--------+-----------------------------------------------------------+-----------------------------------------------------------+---------------------------------------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'cards:cards_inst|current_state.generateCard'                                                                                                                        ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; Slack ; From Node                               ; To Node                       ; Launch Clock ; Latch Clock                                 ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+; 1.082 ; cards:cards_inst|random_number[0]       ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.486      ;
+; 1.084 ; cards:cards_inst|random_number[1]       ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.488      ;
+; 1.087 ; cards:cards_inst|random_number[2]       ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.491      ;
+; 1.097 ; cards:cards_inst|random_number[3]       ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.501      ;
+; 1.122 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[1] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.526      ;
+; 1.127 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[0] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.531      ;
+; 1.127 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[2] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.531      ;
+; 1.143 ; cards:cards_inst|current_state.readCard ; cards:cards_inst|cardFinal[3] ; KEY[0]       ; cards:cards_inst|current_state.generateCard ; -0.500       ; -0.096     ; 0.547      ;
++-------+-----------------------------------------+-------------------------------+--------------+---------------------------------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'KEY[0]'                                                                                                    ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock  ; Clock Edge ; Target                                                    ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+; -1.222 ; 1.000        ; 2.222          ; Port Rate        ; KEY[0] ; Rise       ; KEY[0]                                                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[0]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[0]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[1]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[1]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[2]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[2]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[3]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|cardValue[3]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card1_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Dealer_card2_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card1_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.Player_card2_soma  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerHit_soma     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerHit_soma     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerStay         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealerStay         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealer_turn        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dealer_turn        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.decideWinner       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.decideWinner       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card1  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummyDealer_card2  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card1 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_Player_card2 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_dealerHit    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_playerHit    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.dummy_playerHit    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerHit_soma     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerHit_soma     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerLose         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerLose         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerStay         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerStay         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerTie          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerTie          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerWin          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.playerWin          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.player_turn        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|current_state.player_turn        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[0]                   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[0]                   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[10]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[10]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[11]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[11]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[12]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[12]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[13]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[13]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[14]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[14]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[15]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[15]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[16]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[16]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[17]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[17]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[18]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[18]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[19]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[19]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[1]                   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[1]                   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[20]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[20]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[21]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[21]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[22]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[22]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[23]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[23]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[24]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[24]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[25]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[25]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[26]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[26]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[27]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[27]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[28]                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[28]                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; KEY[0] ; Fall       ; blackjack:blackjack_inst|dealerValue[29]                  ;
++--------+--------------+----------------+------------------+--------+------------+-----------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'cards:cards_inst|current_state.generateCard'                                                                                                ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock                                       ; Clock Edge ; Target                                                 ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[0]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[0]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[1]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[1]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[2]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[2]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[3]                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards:cards_inst|cardFinal[3]                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[0]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[0]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[1]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[1]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[2]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[2]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[3]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|cardFinal[3]|datac                          ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard|regout           ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard|regout           ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|inclk[0] ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|inclk[0] ;
+; 0.500 ; 0.500        ; 0.000          ; High Pulse Width ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|outclk   ;
+; 0.500 ; 0.500        ; 0.000          ; Low Pulse Width  ; cards:cards_inst|current_state.generateCard ; Rise       ; cards_inst|current_state.generateCard~clkctrl|outclk   ;
++-------+--------------+----------------+------------------+---------------------------------------------+------------+--------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                        ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise  ; Fall  ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; 3.132 ; 3.132 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; 3.132 ; 3.132 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 0.362 ; 0.362 ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.097 ; 0.097 ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.046 ; 0.046 ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 0.362 ; 0.362 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; 0.444 ; 0.444 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; 0.181 ; 0.181 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; 0.444 ; 0.444 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; 0.341 ; 0.341 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; 0.385 ; 0.385 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; 0.438 ; 0.438 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                           ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise   ; Fall   ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; -2.955 ; -2.955 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; -2.955 ; -2.955 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 0.399  ; 0.399  ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.276  ; 0.276  ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.399  ; 0.399  ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 0.145  ; 0.145  ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; 0.238  ; 0.238  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; 0.238  ; 0.238  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; -0.048 ; -0.048 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; 0.060  ; 0.060  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; 0.020  ; 0.020  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; -0.041 ; -0.041 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 78.500 ; 78.500 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 78.170 ; 78.170 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 78.341 ; 78.341 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 78.165 ; 78.165 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 78.500 ; 78.500 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 78.142 ; 78.142 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 78.088 ; 78.088 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 78.280 ; 78.280 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 54.367 ; 54.367 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 53.537 ; 53.537 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 53.675 ; 53.675 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 53.871 ; 53.871 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 54.367 ; 54.367 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 54.213 ; 54.213 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 54.160 ; 54.160 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 53.509 ; 53.509 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 6.266  ; 6.266  ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 6.106  ; 6.106  ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 6.266  ; 6.266  ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 6.261  ; 6.261  ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 5.829  ; 5.829  ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 5.813  ; 5.813  ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 5.987  ; 5.987  ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 6.141  ; 6.141  ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 3.742  ; 3.742  ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 3.631  ; 3.631  ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 3.518  ; 3.518  ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 3.742  ; 3.742  ; Fall       ; KEY[0]          ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 5.220 ; 5.220 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 5.619 ; 5.619 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 5.340 ; 5.340 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 5.483 ; 5.483 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 5.834 ; 5.834 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 5.220 ; 5.220 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 5.545 ; 5.545 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 5.352 ; 5.352 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 5.042 ; 5.042 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 5.042 ; 5.042 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 5.043 ; 5.043 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 5.243 ; 5.243 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 5.243 ; 5.243 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 5.279 ; 5.279 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 5.283 ; 5.283 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 5.308 ; 5.308 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 4.781 ; 4.781 ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 5.104 ; 5.104 ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 5.264 ; 5.264 ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 5.260 ; 5.260 ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 4.781 ; 4.781 ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 4.814 ; 4.814 ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 4.986 ; 4.986 ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 5.143 ; 5.143 ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 3.518 ; 3.518 ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 3.631 ; 3.631 ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 3.518 ; 3.518 ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 3.742 ; 3.742 ; Fall       ; KEY[0]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                          ;
++----------------------------------------------+----------+---------+----------+---------+---------------------+
+; Clock                                        ; Setup    ; Hold    ; Recovery ; Removal ; Minimum Pulse Width ;
++----------------------------------------------+----------+---------+----------+---------+---------------------+
+; Worst-case Slack                             ; -47.787  ; -2.016  ; N/A      ; N/A     ; -1.469              ;
+;  KEY[0]                                      ; -47.787  ; -2.016  ; N/A      ; N/A     ; -1.469              ;
+;  cards:cards_inst|current_state.generateCard ; -2.648   ; 1.082   ; N/A      ; N/A     ; 0.500               ;
+; Design-wide TNS                              ; -1008.72 ; -25.522 ; 0.0      ; 0.0     ; -148.109            ;
+;  KEY[0]                                      ; -998.224 ; -25.522 ; N/A      ; N/A     ; -148.109            ;
+;  cards:cards_inst|current_state.generateCard ; -10.496  ; 0.000   ; N/A      ; N/A     ; 0.000               ;
++----------------------------------------------+----------+---------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Times                                                                                                                        ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise  ; Fall  ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; 6.187 ; 6.187 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; 6.187 ; 6.187 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 1.274 ; 1.274 ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.662 ; 0.662 ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.514 ; 0.514 ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 1.274 ; 1.274 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; 2.228 ; 2.228 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; 1.451 ; 1.451 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; 2.228 ; 2.228 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; 1.971 ; 1.971 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; 2.078 ; 2.078 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; 2.143 ; 2.143 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+-------+-------+------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Times                                                                                                                           ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; Data Port ; Clock Port                                  ; Rise   ; Fall   ; Clock Edge ; Clock Reference                             ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+; KEY[*]    ; KEY[0]                                      ; -2.955 ; -2.955 ; Fall       ; KEY[0]                                      ;
+;  KEY[1]   ; KEY[0]                                      ; -2.955 ; -2.955 ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; KEY[0]                                      ; 0.522  ; 0.522  ; Fall       ; KEY[0]                                      ;
+;  SW[0]    ; KEY[0]                                      ; 0.276  ; 0.276  ; Fall       ; KEY[0]                                      ;
+;  SW[1]    ; KEY[0]                                      ; 0.522  ; 0.522  ; Fall       ; KEY[0]                                      ;
+;  SW[5]    ; KEY[0]                                      ; 0.145  ; 0.145  ; Fall       ; KEY[0]                                      ;
+; SW[*]     ; cards:cards_inst|current_state.generateCard ; 0.238  ; 0.238  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[5]    ; cards:cards_inst|current_state.generateCard ; 0.238  ; 0.238  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[6]    ; cards:cards_inst|current_state.generateCard ; -0.048 ; -0.048 ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[7]    ; cards:cards_inst|current_state.generateCard ; 0.060  ; 0.060  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[8]    ; cards:cards_inst|current_state.generateCard ; 0.020  ; 0.020  ; Rise       ; cards:cards_inst|current_state.generateCard ;
+;  SW[9]    ; cards:cards_inst|current_state.generateCard ; -0.041 ; -0.041 ; Rise       ; cards:cards_inst|current_state.generateCard ;
++-----------+---------------------------------------------+--------+--------+------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Clock to Output Times                                                     ;
++-----------+------------+---------+---------+------------+-----------------+
+; Data Port ; Clock Port ; Rise    ; Fall    ; Clock Edge ; Clock Reference ;
++-----------+------------+---------+---------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 200.758 ; 200.758 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 199.976 ; 199.976 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 200.471 ; 200.471 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 199.890 ; 199.890 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 200.758 ; 200.758 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 199.908 ; 199.908 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 199.643 ; 199.643 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 200.279 ; 200.279 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 144.646 ; 144.646 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 142.296 ; 142.296 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 142.708 ; 142.708 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 143.233 ; 143.233 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 144.646 ; 144.646 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 144.147 ; 144.147 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 144.008 ; 144.008 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 142.150 ; 142.150 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 14.154  ; 14.154  ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 13.949  ; 13.949  ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 14.154  ; 14.154  ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 14.150  ; 14.150  ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 13.249  ; 13.249  ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 13.231  ; 13.231  ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 13.624  ; 13.624  ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 14.016  ; 14.016  ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 7.934   ; 7.934   ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 7.671   ; 7.671   ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 7.385   ; 7.385   ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 7.934   ; 7.934   ; Fall       ; KEY[0]          ;
++-----------+------------+---------+---------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; HEX0[*]   ; KEY[0]     ; 5.220 ; 5.220 ; Fall       ; KEY[0]          ;
+;  HEX0[0]  ; KEY[0]     ; 5.619 ; 5.619 ; Fall       ; KEY[0]          ;
+;  HEX0[1]  ; KEY[0]     ; 5.340 ; 5.340 ; Fall       ; KEY[0]          ;
+;  HEX0[2]  ; KEY[0]     ; 5.483 ; 5.483 ; Fall       ; KEY[0]          ;
+;  HEX0[3]  ; KEY[0]     ; 5.834 ; 5.834 ; Fall       ; KEY[0]          ;
+;  HEX0[4]  ; KEY[0]     ; 5.220 ; 5.220 ; Fall       ; KEY[0]          ;
+;  HEX0[5]  ; KEY[0]     ; 5.545 ; 5.545 ; Fall       ; KEY[0]          ;
+;  HEX0[6]  ; KEY[0]     ; 5.352 ; 5.352 ; Fall       ; KEY[0]          ;
+; HEX1[*]   ; KEY[0]     ; 5.042 ; 5.042 ; Fall       ; KEY[0]          ;
+;  HEX1[0]  ; KEY[0]     ; 5.042 ; 5.042 ; Fall       ; KEY[0]          ;
+;  HEX1[1]  ; KEY[0]     ; 5.043 ; 5.043 ; Fall       ; KEY[0]          ;
+;  HEX1[2]  ; KEY[0]     ; 5.243 ; 5.243 ; Fall       ; KEY[0]          ;
+;  HEX1[3]  ; KEY[0]     ; 5.243 ; 5.243 ; Fall       ; KEY[0]          ;
+;  HEX1[4]  ; KEY[0]     ; 5.279 ; 5.279 ; Fall       ; KEY[0]          ;
+;  HEX1[5]  ; KEY[0]     ; 5.283 ; 5.283 ; Fall       ; KEY[0]          ;
+;  HEX1[6]  ; KEY[0]     ; 5.308 ; 5.308 ; Fall       ; KEY[0]          ;
+; HEX3[*]   ; KEY[0]     ; 4.781 ; 4.781 ; Fall       ; KEY[0]          ;
+;  HEX3[0]  ; KEY[0]     ; 5.104 ; 5.104 ; Fall       ; KEY[0]          ;
+;  HEX3[1]  ; KEY[0]     ; 5.264 ; 5.264 ; Fall       ; KEY[0]          ;
+;  HEX3[2]  ; KEY[0]     ; 5.260 ; 5.260 ; Fall       ; KEY[0]          ;
+;  HEX3[3]  ; KEY[0]     ; 4.781 ; 4.781 ; Fall       ; KEY[0]          ;
+;  HEX3[4]  ; KEY[0]     ; 4.814 ; 4.814 ; Fall       ; KEY[0]          ;
+;  HEX3[5]  ; KEY[0]     ; 4.986 ; 4.986 ; Fall       ; KEY[0]          ;
+;  HEX3[6]  ; KEY[0]     ; 5.143 ; 5.143 ; Fall       ; KEY[0]          ;
+; LEDR[*]   ; KEY[0]     ; 3.518 ; 3.518 ; Fall       ; KEY[0]          ;
+;  LEDR[0]  ; KEY[0]     ; 3.631 ; 3.631 ; Fall       ; KEY[0]          ;
+;  LEDR[1]  ; KEY[0]     ; 3.518 ; 3.518 ; Fall       ; KEY[0]          ;
+;  LEDR[2]  ; KEY[0]     ; 3.742 ; 3.742 ; Fall       ; KEY[0]          ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                           ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths     ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+; KEY[0]                                      ; cards:cards_inst|current_state.generateCard ; 0        ; 8        ; 0        ; 0            ;
+; cards:cards_inst|current_state.generateCard ; KEY[0]                                      ; 0        ; 0        ; 93       ; 25           ;
+; KEY[0]                                      ; KEY[0]                                      ; 0        ; 0        ; 0        ; > 2147483647 ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                            ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths     ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+; KEY[0]                                      ; cards:cards_inst|current_state.generateCard ; 0        ; 8        ; 0        ; 0            ;
+; cards:cards_inst|current_state.generateCard ; KEY[0]                                      ; 0        ; 0        ; 93       ; 25           ;
+; KEY[0]                                      ; KEY[0]                                      ; 0        ; 0        ; 0        ; > 2147483647 ;
++---------------------------------------------+---------------------------------------------+----------+----------+----------+--------------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 8     ; 8    ;
+; Unconstrained Input Port Paths  ; 158   ; 158  ;
+; Unconstrained Output Ports      ; 24    ; 24   ;
+; Unconstrained Output Port Paths ; 1319  ; 1319 ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+    Info: Processing started: Fri Jun 27 18:10:51 2025
+Info: Command: quartus_sta blackjack -c top_blackjack
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Warning (335093): TimeQuest Timing Analyzer is analyzing 4 combinational loops as latches.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'top_blackjack.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name KEY[0] KEY[0]
+    Info (332105): create_clock -period 1.000 -name cards:cards_inst|current_state.generateCard cards:cards_inst|current_state.generateCard
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -47.787
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):   -47.787      -998.224 KEY[0] 
+    Info (332119):    -2.648       -10.496 cards:cards_inst|current_state.generateCard 
+Info (332146): Worst-case hold slack is -2.016
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -2.016       -25.522 KEY[0] 
+    Info (332119):     2.239         0.000 cards:cards_inst|current_state.generateCard 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.469
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.469      -148.109 KEY[0] 
+    Info (332119):     0.500         0.000 cards:cards_inst|current_state.generateCard 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -17.612
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):   -17.612      -331.645 KEY[0] 
+    Info (332119):    -0.540        -2.118 cards:cards_inst|current_state.generateCard 
+Info (332146): Worst-case hold slack is -1.150
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.150       -17.293 KEY[0] 
+    Info (332119):     1.082         0.000 cards:cards_inst|current_state.generateCard 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.222
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.222      -121.222 KEY[0] 
+    Info (332119):     0.500         0.000 cards:cards_inst|current_state.generateCard 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4612 megabytes
+    Info: Processing ended: Fri Jun 27 18:10:53 2025
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

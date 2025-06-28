@@ -1,0 +1,53 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'KEY[0]'
+Slack : -47.787
+TNS   : -998.224
+
+Type  : Slow Model Setup 'cards:cards_inst|current_state.generateCard'
+Slack : -2.648
+TNS   : -10.496
+
+Type  : Slow Model Hold 'KEY[0]'
+Slack : -2.016
+TNS   : -25.522
+
+Type  : Slow Model Hold 'cards:cards_inst|current_state.generateCard'
+Slack : 2.239
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'KEY[0]'
+Slack : -1.469
+TNS   : -148.109
+
+Type  : Slow Model Minimum Pulse Width 'cards:cards_inst|current_state.generateCard'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'KEY[0]'
+Slack : -17.612
+TNS   : -331.645
+
+Type  : Fast Model Setup 'cards:cards_inst|current_state.generateCard'
+Slack : -0.540
+TNS   : -2.118
+
+Type  : Fast Model Hold 'KEY[0]'
+Slack : -1.150
+TNS   : -17.293
+
+Type  : Fast Model Hold 'cards:cards_inst|current_state.generateCard'
+Slack : 1.082
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'KEY[0]'
+Slack : -1.222
+TNS   : -121.222
+
+Type  : Fast Model Minimum Pulse Width 'cards:cards_inst|current_state.generateCard'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

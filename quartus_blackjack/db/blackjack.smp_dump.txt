@@ -1,0 +1,33 @@
+
+State Machine - |top_blackjack|blackjack:blackjack_inst|current_state
+Name current_state.dummy_dealerHit current_state.dummy_playerHit current_state.dummyDealer_card2 current_state.dummyDealer_card1 current_state.dummy_Player_card2 current_state.dummy_Player_card1 current_state.decideWinner current_state.playerTie current_state.playerWin current_state.dealerStay current_state.dealerHit_soma current_state.dealer_turn current_state.playerLose current_state.playerStay current_state.playerHit_soma current_state.player_turn current_state.Dealer_card2_soma current_state.Dealer_card2 current_state.Dealer_card1_soma current_state.Dealer_card1 current_state.Player_card2_soma current_state.Player_card2 current_state.Player_card1_soma current_state.Player_card1 
+current_state.Player_card1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.Player_card1_soma 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.Player_card2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.Player_card2_soma 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.Dealer_card1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.Dealer_card1_soma 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.Dealer_card2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.Dealer_card2_soma 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.player_turn 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.playerHit_soma 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.playerStay 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.playerLose 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dealer_turn 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dealerHit_soma 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dealerStay 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.playerWin 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.playerTie 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.decideWinner 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummy_Player_card1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummy_Player_card2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummyDealer_card1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummyDealer_card2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummy_playerHit 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.dummy_dealerHit 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |top_blackjack|cards:cards_inst|current_state
+Name current_state.readCard current_state.generateCard current_state.idle 
+current_state.idle 0 0 0 
+current_state.generateCard 0 1 1 
+current_state.readCard 1 0 1 
