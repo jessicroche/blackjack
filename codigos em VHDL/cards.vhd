@@ -36,13 +36,14 @@ begin
                     end if;
 
                 when generateCard =>
-                    if reqManual = '0' then 
+                    if reqManual = '0' then
                         lfsr <= lfsr(14 downto 0) & 
                         (lfsr(15) xor lfsr(13) xor lfsr(12) xor lfsr(10));
                         rnd_int <= (to_integer(unsigned(lfsr)) mod 13) + 1;
                         random_number <= std_logic_vector(to_unsigned(rnd_int, 4));
                     end if;
                     current_state <= readCard;
+                    
                 when readCard =>
                     current_state <= idle;
 
@@ -50,12 +51,13 @@ begin
             end case;
         end if;
     end process;
-    
+
     process(current_state)
     begin
         case current_state is 
             when idle =>
                 cardFinal <= (others => '0'); -- zera
+
             when readCard =>
                 if reqManual = '0' then
                     cardFinal <= random_number;
